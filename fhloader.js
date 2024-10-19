@@ -6,6 +6,12 @@ function loadFooter() {
     .catch(error => console.error('Error loading footer:', error));
 }
 
+function loadLHeader(){
+    fetch('loggedHeader.html').then(response => response.text()).then(data=> {
+        document.getElementById('header').innerHTML = data;
+    }).catch(error => console.error('Error loading header:', error))
+}
+
 function loadHeader() {
     fetch('header.html')
         .then(response => response.text()).then(data => {

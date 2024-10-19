@@ -1,0 +1,44 @@
+body,html{
+    margin:auto;
+    padding:0;
+    min-height:100%;
+    font-family:sans-serif;
+    width:100%;
+    overflow-x: hidden;
+    display: flexbox;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+   
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  
+  }
+  
+  html::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+
+  .background{
+    background-image: url("/bg.png");
+    background-position:center;
+    background-size:cover;
+    min-height:100vh;
+    width:inherit;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+  }
+
+  #postContainer{
+    margin:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap:wrap;
+  }

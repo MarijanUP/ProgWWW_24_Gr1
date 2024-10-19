@@ -1,95 +1,87 @@
-header{
-  background-color:black;
-}
-
 body,html{
-  margin:0;
+  margin:auto;
   padding:0;
   height:100%;
   font-family:sans-serif;
-  /* overflow: hidden; */
+  width:100%;
+  overflow-x: hidden;
+ 
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+
+}
+
+html::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 
 .background{
-  background-image:url("/img/bg1.png");
-  background-size:cover;
+  background-image: url("/bg.png");
   background-position:center;
+  background-size:cover;
   height:100%;
+  width:inherit;
   display:flex;
   justify-content:center;
   align-items:center;
   position:relative;
-}
-.overlay{
-  background-color:rgba(0,0,0,0.5);
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-}
-.content{
-  position:relative;
-  text-align:center;
-  color:white;
-  z-index:1;
-}
-.contenth 1{
-  font-size:2.5rem;
-  font-weight:bold;
-  margin-bottom:0.5erm;
-}
-.contenth 2{
-  font-size:1.5rem;
-  margin-bottom:2rem;
-}
-.search-bar{
-  position:relative;
-  width:75%;
-  max-width:500px;
-  margin:0 2rem 2rem;
-}
-.search-bar input{
-  width:100%;
-  padding:1rem 1.5rem;
-  border-radius:90px;
-  border:none;
-  outline:none;
-  font-size:1rem;
-  color:#333;
 }
 
-.buttons{
+.mid{
+  background: white;
+  color:#5c0000;
+  width:100%;
+  margin-left:100px;
+  margin-right:100px;
+  height:auto;
   display:flex;
-  justify-content:center;
-  gap:1rem;
+  justify-content:flex-start;
+  align-items:top;
+  flex-direction: column;
+  
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+  overflow:hidden;
+  box-shadow: 0 8px 15px #00000066;
 }
-.button{
-  background-color:rgba(128,128,128,0.75);
-  padding:1rem 2rem;
-  border-radius:0.5rem;
-  display:flex;
-  align-items:center;
-  gap:0.5rem;
-  cursor:pointer;
-  transition:ease;
-  background-color 0.3;
+
+#welcome{
+  margin-left:20px;
+  font-size: 40px;
+  font-weight: bold;
 }
-.button: hover{
-  background-color:rgba(128,128,128,0.9);
+
+.desc{
+  margin:0 20px;
+  font-size:30px;
 }
-.button i{
-  font-size:1.5rem;
+
+.toLogin{
+  height:inherit;
+  width:inherit;
+  color:white;
+  background:#5c0000;
+  border-radius:90px;
+  border:none;
+  padding:3px 10px;
 }
-.button span{
-  font-size:1rem;
+
+.toLogin:hover{
+  background:#880000;
+  box-shadow: 0 0 5px #00000066;
 }
-.button.new i{
-  color:#FFA500;
-}
-.button.used i{
-  color:#FF1493;
-}
-.button.electric i{
-  color:#20B2AA;
+
+#loginButtonLink{
+  width:100px;
+  margin-left:20px;
+  margin-bottom:20px;
+  zoom:150%;
+  color:white;
+  background:#5c0000;
+  border-radius:90px;
+  border:none;
 }

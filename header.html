@@ -4,18 +4,23 @@
     <meta charset="utf-8">
     <title></title>
     <style>
+
       .logo{
         display:flex;
         justify-content:center;
         align-items:center;
-        margin:10px 0px;
+      }
+      
+      #logo{
+        width: 100px;
+        height:100px;
       }
 
       .navigation{
-        margin-left:10px;
-        margin-right:10px;
+        width:inherit;
         display:flex;
         justify-content:space-around;
+        background: #5c0000;
       }
 
       .tabs{
@@ -36,14 +41,12 @@
       <nav>
         <div class="navigation">
           <div class="logo">
-            <a href="index.html"><img width= "131px" height="66px" src="rodlogo.png" alt=""></a>
+            <a href="index.html"><img id="logo" src="catchup/logo.png" alt="logo"></a>
           </div>
           <div class="tabs">
-            <a href="index.html" class="tab">Home Page</a>
+            <a href="index.html" class="tab">Main Menu</a>
             <a href="about.html" class="tab">About Us</a>
-            <a href="buy.html" class="tab">Buy a Car</a>
-            <a href="sell.html" class="tab">Sell a Car</a>
-            <a href="signup.html" class="tab">Join Us</a>
+            <a href="login.html" class="tab">Log in</a>
             </div>
         </div>
       </nav>
