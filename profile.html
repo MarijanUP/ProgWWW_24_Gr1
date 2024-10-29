@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
+    <title>Profile</title>
+</head>
+<body onload="loadLHeader(); loadProfile()">
+
+    <div id="header"></div>
+
+    <div class="background">
+        <div class="profileContainer">
+            <img id="profilePic">
+            <div class="bottom">
+                <div id="icons">
+                    <img src="catchup/name.png" alt="">
+                    <img src="catchup/idimg.png" alt="">
+                    <img src="catchup/book.png" alt="">
+                    <img src="catchup/email.png" alt="">
+                </div>
+                <div class="profileInfo"> 
+                    <div id="name"></div>
+                    <div id="sid"></div>
+                    <div id="bachelor"></div>
+                    <div id="email"></div>
+                </div>
+            </div>
+            <div class="buttons">
+                <a href="login.html"><button class="button" id="logout">Log out</button></a>
+                <a href="changepass.html"><button class="button" id="changepass">Change password</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+    <script src="fhloader.js"></script>
+</body>
+</html>

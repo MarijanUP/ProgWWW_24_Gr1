@@ -30,15 +30,7 @@ html {
   width: 100%;
   margin: 0px;
   overflow-x: hidden;
-
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
 }
-
-html::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
-}
-
 
 
 .profile {
@@ -48,7 +40,7 @@ html::-webkit-scrollbar {
   background-color: white;
   width: 500px;
   height: 500px;
-  margin:-2% 5%;
+  margin: -2% 5%;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   border-top-left-radius: 30px;

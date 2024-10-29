@@ -1,87 +1,79 @@
-body,html{
-  margin:auto;
-  padding:0;
-  height:100%;
-  font-family:sans-serif;
-  width:100%;
+body,
+html {
+  margin: auto;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+  width: 100%;
   overflow-x: hidden;
- 
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
-
-
 }
 
-html::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
-}
-
-.background{
+.background {
   background-image: url("/bg.png");
-  background-position:center;
-  background-size:cover;
-  height:100%;
-  width:inherit;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:relative;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.mid{
+.mid {
   background: white;
-  color:#5c0000;
-  width:100%;
-  margin-left:100px;
-  margin-right:100px;
-  height:auto;
-  display:flex;
-  justify-content:flex-start;
-  align-items:top;
+  color: #5c0000;
+  width: 100%;
+  margin-left: 100px;
+  margin-right: 100px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: top;
   flex-direction: column;
-  
+
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 
-  overflow:hidden;
+  overflow: hidden;
   box-shadow: 0 8px 15px #00000066;
 }
 
-#welcome{
-  margin-left:20px;
+#welcome {
+  margin-left: 20px;
   font-size: 40px;
   font-weight: bold;
 }
 
-.desc{
-  margin:0 20px;
-  font-size:30px;
+.desc {
+  margin: 0 20px;
+  font-size: 30px;
 }
 
-.toLogin{
-  height:inherit;
-  width:inherit;
-  color:white;
-  background:#5c0000;
-  border-radius:90px;
-  border:none;
-  padding:3px 10px;
+.toLogin {
+  height: inherit;
+  width: inherit;
+  color: white;
+  background: #5c0000;
+  border-radius: 90px;
+  border: none;
+  padding: 3px 10px;
 }
 
-.toLogin:hover{
-  background:#880000;
+.toLogin:hover {
+  background: #880000;
   box-shadow: 0 0 5px #00000066;
 }
 
-#loginButtonLink{
-  width:100px;
-  margin-left:20px;
-  margin-bottom:20px;
-  zoom:150%;
-  color:white;
-  background:#5c0000;
-  border-radius:90px;
-  border:none;
+#loginButtonLink {
+  width: 100px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  zoom: 150%;
+  color: white;
+  background: #5c0000;
+  border-radius: 90px;
+  border: none;
 }
