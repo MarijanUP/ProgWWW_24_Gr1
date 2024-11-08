@@ -28,20 +28,20 @@ function getData(post){
 
             document.getElementById('poster').id = "poster" + nPost.id;
             document.getElementById('name').id = "name" + nPost.id;
+            document.getElementById('time').id = "time" + nPost.id;
             document.getElementById('title').id = "title" + nPost.id;
             document.getElementById('desc').id = "desc" + nPost.id;
             document.getElementById('uni').id = "uni" + nPost.id;
-            document.getElementById('time').id = "time" + nPost.id;
             document.getElementById('likes').id = "likes" + nPost.id;
             document.getElementById('likeButton').id = "likeButton" + nPost.id;
             document.getElementById('comments').id = "comments" + nPost.id;
             document.getElementById('user').id = "user" + nPost.id;
 
             document.getElementById("poster" + nPost.id).src = "" + post.child("profileURL").val();
-            document.getElementById("name" + nPost.id).innerHTML = post.child("poster").val();
+            document.getElementById("name" + nPost.id).innerHTML = post.child("poster").val();           
+            document.getElementById("time" + nPost.id).innerHTML = post.child("posttime").val();
             document.getElementById("title" + nPost.id).innerHTML = post.child("title").val();
             document.getElementById("desc" + nPost.id).innerHTML = post.child("desc").val();
-            document.getElementById("time" + nPost.id).innerHTML = post.child("posttime").val();
             get(ref(db, "USERS/" + post.child("posterID").val())).then(user => {
                 document.getElementById("uni" + nPost.id).innerHTML = user.child("DREJTIMI").val();
             })
