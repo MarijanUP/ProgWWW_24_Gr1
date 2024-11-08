@@ -160,3 +160,8 @@ hr {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.fa.fa-thumbs-up{
+    font-size: 18px;
+    margin-bottom:2px;
+  }

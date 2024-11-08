@@ -96,6 +96,8 @@ function getData(post){
 
                 });
 
+
+            }).then(whatever=>{
                 onValue(startCountRef, posts => {
                     posts.forEach((post) => {
 
@@ -108,11 +110,15 @@ function getData(post){
                                 }
                             })
 
-                            if (fill) {
-                                document.getElementById("likeButton" + post.key).src = "catchup/filledthumbsup.png"
-                            } else {
-                                document.getElementById("likeButton" + post.key).src = "catchup/blankthumbsup.png"
+                            try{
+                                if (fill) {
+                                    document.getElementById("likeButton" + post.key).style.color = "#1877F2";
+                                } else {
+                                    document.getElementById("likeButton" + post.key).style.color = "grey";
+                                }
+                            }catch (error){
                             }
+                            
                         }
 
                         try {
@@ -125,9 +131,7 @@ function getData(post){
 
                 }, {
                     onlyOnce: true
-                })
-
-
+                });
             }).catch(error => console.error('Error loading post:', error));
 }
 
@@ -143,14 +147,21 @@ onValue(startCountRef, posts => {
                 }
             })
 
-            if (fill) {
-                document.getElementById("likeButton" + post.key).src = "catchup/filledthumbsup.png"
-            } else {
-                document.getElementById("likeButton" + post.key).src = "catchup/blankthumbsup.png"
+            try{
+                if (fill) {
+                    document.getElementById("likeButton" + post.key).style.color = "#1877F2"
+                } else {
+                    document.getElementById("likeButton" + post.key).style.color = "grey"
+                }
+            }catch(error){
             }
+            
         }else{
-            document.getElementById("likeButton" + post.key).src = "catchup/blankthumbsup.png"
-        }
+            try{
+                document.getElementById("likeButton" + post.key).style.color = "grey"
+            }catch(error){
+            }
+         }
 
         try {
             document.getElementById("likes" + post.key).innerHTML = post.child("likes").val();
