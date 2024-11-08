@@ -13,7 +13,7 @@ html {
 }
 
 .background {
-  background-image: url("/bg.png");
+  color:antiquewhite;
   background-position: center;
   background-size: cover;
   min-height: 100vh;
@@ -31,8 +31,8 @@ html {
 }
 
 #search{
-  width:520px;
-  padding:10px 20px;
+  width:700px;
+  padding:20px 20px;
   margin-top:10px;
   margin-bottom:10px;
   border:none;
