@@ -1,25 +1,46 @@
-/* Basic styling for the container and layout */
+/* Light Mode */
+:root {
+    --bg-color: #FFFFFF;
+    --text-color: #050505;
+    --secondary-text-color: #606770;
+    --container-bg-color: #FFFFFF;
+    --divider-color: #E4E6EB;
+    --button-bg-color: #1877F2;
+    --button-hover-bg-color: #155cb0;
+    --header-bg: var(--bg-color);
+}
+
+/* Dark Mode */
+.darkmode {
+    --bg-color: #18191A;
+    --text-color: #E4E6EB;
+    --secondary-text-color: #B0B3B8;
+    --container-bg-color: #242526;
+    --divider-color: #3A3B3C;
+    --button-bg-color: #1877F2;
+    --button-hover-bg-color: #155cb0;
+    --header-bg: var(--container-bg-color);
+}
+
 #container {
     font-size: 16px;
     padding: 15px;
     margin-bottom: 15px;
     width: 600px;
-    background-color: #FFFFFF;
+    background-color: var(--container-bg-color);
     height: auto;
     font-family: Arial, sans-serif;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Styling for the horizontal rule (divider) */
 hr {
-    background-color: #E4E6EB;
+    background-color: var(--divider-color);
     height: 1px;
     margin: 10px 0;
     border: none;
 }
 
-/* Top section layout with profile picture and name/time info */
 #top {
     display: flex;
     align-items: flex-start;
@@ -46,47 +67,44 @@ hr {
 
 .name {
     font-weight: bold;
-    color: #050505;
+    color: var(--text-color);
     font-size: 14px;
 }
 
 .time {
     font-size: 12px;
-    color: black;
-    margin-top: 2px; /* Space between name and time */
+    color: var(--secondary-text-color);
+    margin-top: 2px;
 }
 
-/* Main content section with title and description */
 #mid {
     margin: 10px 0;
-    color: #1C1E21;
+    color: var(--text-color);
 }
 
 .title {
     font-weight: bold;
-    color: #050505;
+    color: var(--text-color);
     font-size: 16px;
     margin-bottom: 5px;
 }   
 
 .desc {
     font-size: 14px;
-    color: #4B4F56;
+    color: var(--secondary-text-color);
     line-height: 1.4;
 }
 
-/* University/subject info styling */
 #uniAndTime {
     font-size: 12px;
-    color: #606770;
+    color: var(--secondary-text-color);
     margin-top: 5px;
 }
 
-/* Interactions section for likes and comments */
 #interactions {
     display: flex;
     align-items: center;
-    color: #606770;
+    color: var(--secondary-text-color);
     font-size: 14px;
     margin: 10px 0;
 }
@@ -102,23 +120,22 @@ hr {
     padding-left: 5px;
 }
 
-/* Bottom section with comment input */
 #bottom {
     display: flex;
     align-items: center;
     padding-top: 10px;
-    border-top: 1px solid #E4E6EB;
+    border-top: 1px solid var(--divider-color);
 }
 
 #commentText {
     border-radius: 20px;
-    border: 1px solid #E4E6EB;
+    border: 1px solid var(--divider-color);
     height: 36px;
     width: 70%;
     margin-left: 10px;
     font-size: 14px;
     padding: 5px 10px;
-    color: #1C1E21;
+    color: var(--text-color);
     background-color: #F0F2F5;
 }
 
@@ -130,7 +147,7 @@ hr {
 #commentButton {
     border-radius: 20px;
     border: none;
-    background-color: #1877F2;
+    background-color: var(--button-bg-color);
     color: white;
     font-weight: normal;
     font-size: 14px;
@@ -141,28 +158,20 @@ hr {
 }
 
 #commentButton:hover {
-    background-color: #155cb0;
+    background-color: var(--button-hover-bg-color);
 }
 
-/* Placeholder color */
 #commentText::placeholder {
-    color: #606770;
+    color: var(--secondary-text-color);
 }
 
-/* Styling for social icon and interaction hover effect */
 #social {
     font-size: 20px;
-    color: #1877F2;
+    color: var(--button-bg-color);
     margin-left: 10px;
 }
 
 .name:hover {
     text-decoration: underline;
     cursor: pointer;
-}
-
-.fa.fa-thumbs-up{
-    font-size: 18px;
-    margin-bottom:2px;
-    margin-left:10px;
 }

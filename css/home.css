@@ -12,6 +12,18 @@ html {
   justify-content: center;
 }
 
+.background {
+  color:antiquewhite;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  width: inherit;
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+
 #postContainer {
   margin: 20px;
   display: flex;
