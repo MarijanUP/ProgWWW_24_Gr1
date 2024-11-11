@@ -9,9 +9,6 @@ html {
 }
 
 .background {
-  background-image: url("../images/bg.png");
-  background-position: center;
-  background-size: cover;
   height: 100%;
   width: inherit;
   display: flex;

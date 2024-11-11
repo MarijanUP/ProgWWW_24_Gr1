@@ -72,6 +72,7 @@ body {
 
 .header-navigation {
 	display: flex;
+	justify-content: space-between;
 	flex-wrap: wrap;
 }
 
@@ -79,8 +80,8 @@ body {
 .header-navigation button {
 	font-size: 1.125rem;
 	color: inherit;
-	margin-left: 1.75rem;
 	position: relative;
+	margin:0px 1.15rem;
 	font-weight: 500;
 }
 

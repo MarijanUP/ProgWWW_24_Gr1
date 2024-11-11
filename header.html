@@ -1,8 +1,5 @@
-
-
-
 <head>
-    <link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/header.css">
 
 
 </head>
@@ -11,52 +8,30 @@
 <header class="header-outer">
 	<div class="header-inner responsive-wrapper">
 		<div class="header-logo">
-			<a href="index.php"><img src="catchup/logo.png" /></a>
+			<a href="index.php"><img src="catchup/logo2.png" /></a>
 		</div>
 		<nav class="header-navigation">
-		
-      <a href="index.html" class="tab">Main Menu</a>
-      <a href="about.html" class="tab">About Us</a>
-      <a href="login.html" class="tab">Log in</a>
-      
-					
-	
-			
+
+			<a href="index.html" class="tab">Main Menu</a>
+			<a href="about.html" class="tab">About Us</a>
+			<a href="login.html" class="tab">Log in</a>
+
+
+
+
 		</nav>
 
 
 		<div class="header-settings">
-			<img src="https://static.thenounproject.com/png/4238597-200.png" id="settings-button" onclick="onClick()">
+			<img src="https://static.thenounproject.com/png/4238597-200.png" id="settings-button">
 			<div class="dropdown-menu">
 
-				
-					<a href="login.php">Log in</a>
-					<a href="signup.php">Sign up</a>
-	
+				<a href="login.php">Log in</a>
+				<a href="signup.php">Sign up</a>
+
 			</div>
 		</div>
 
 
-	
-		
 	</div>
 </header>
-
-
-<script>
-document.getElementById("settings-button").addEventListener("click", function(event) {
-    console.log("Settings button clicked");  // This should be fine.
-    var dropdownMenu = document.querySelector(".dropdown-menu");
-    dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-});
-
-
-
-document.addEventListener("click", function(event) {
-    var isClickInside = document.querySelector(".header-settings").contains(event.target);
-    if (!isClickInside) {
-        document.querySelector(".dropdown-menu").style.display = "none";
-        console.log("fuck you cunt");
-    }
-});
-</script>

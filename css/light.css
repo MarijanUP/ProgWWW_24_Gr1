@@ -1,0 +1,15 @@
+.background {
+    color:antiquewhite;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    width: inherit;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+  }
+
+  i{
+    color:rgb(24,119,242)
+  }
