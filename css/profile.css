@@ -19,21 +19,6 @@ html::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
 
-.background{
-    background-image: url("../images/bg.png");
-    background-position:center;
-    background-size:cover;
-    min-height:100vh;
-    width:inherit;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-    flex-direction: column;
-    flex-wrap: wrap;
-
-}
-
 .profileContainer{
     background-color: white;
     width:500px;

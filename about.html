@@ -5,7 +5,17 @@
     <link rel="stylesheet" href="/css/about.css">
     <title>About Us</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    
+    <link rel="stylesheet" href="css/light.css">
+
+    <style>
+      fieldset{
+        min-height:250px; 
+        border-width:3px; 
+        border-radius:10px; 
+        border-color:rgb(24,119,242,.4);
+      }
+    </style>
+
   </head>
   <body onload="loadHeader(); loadFooter();">
     <div id="header">
@@ -40,11 +50,15 @@
                 </a>
               </div>
 
-              <div class="profileDesc">
-                <div class="profileDescText">
-                  <p>Jasin shkruje ti per veti se spo di qka met shkru lmfaooo</p>
+              <fieldset>
+                <legend><strong>Bio</strong></legend>
+                <div class="profileDesc">
+                  <div class="profileDescText">
+                    <p>Jasin shkruje ti per veti se spo di qka met shkru lmfaooo</p>
+                  </div>
                 </div>
-              </div>
+              </fieldset>
+              
             </div>
 
 
@@ -80,12 +94,14 @@
                 </a>
               </div>
               
-
-              <div class="profileDesc">
-                <div class="profileDescText">
-                  <p>Nejse as per veti spo di qka me shkru veq pe mushi me fjal mu dok profesional</p>
+              <fieldset>
+                <legend><strong>Bio</strong></legend>
+                <div class="profileDesc">
+                  <div class="profileDescText">
+                    <p>Nejse as per veti spo di qka me shkru veq pe mushi me fjal mu dok profesional</p>
+                  </div>
                 </div>
-              </div>
+              </fieldset>
             </div>
 
 
@@ -94,10 +110,6 @@
 
         </div>
       </div>
-
-    <div id="footer">
-
-    </div>
 
     <script src="javascript/fhloader.js"></script>
 

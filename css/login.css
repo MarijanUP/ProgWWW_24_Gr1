@@ -4,17 +4,6 @@ body {
     overflow-x: hidden;
 }
 
-.background {
-    background-image: url("../images/bg.png");
-    background-position: center;
-    background-size: cover;
-    height: 100%;
-    width: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .loginGUI {
     width: inherit;
     height: inherit;
