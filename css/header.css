@@ -43,7 +43,7 @@ body {
 }
 
 .responsive-wrapper {
-    width: 90%;
+    width:90%;
     margin: 0 auto;
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 .header-inner {
-    height: 70px;
+    height: inherit;
     position: sticky;
     top: 0;
     display: flex;
@@ -84,8 +84,8 @@ body {
 .header-navigation button {
     font-size: 1.125rem;
     color: var(--text-color);
-    margin-left: 1.75rem;
-    position: relative;
+    position:relative;
+    margin:0px 10px;
     font-weight: 500;
 }
 
@@ -163,10 +163,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 20px;
+    position: relative;
     right: 20px;
     border: none;
+
 }
 
 #theme-switch svg {

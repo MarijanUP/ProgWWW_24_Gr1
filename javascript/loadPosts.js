@@ -17,122 +17,126 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const startCountRef = ref(db, 'POSTS/');
 
-function getData(post){
+var postArray = [];
+
+function getData(post) {
     var nPost = document.createElement("div");
-        nPost.id = post.key;
-        nPost.className = "post";
-        document.getElementById("newestPostContainer").prepend(nPost);
+    nPost.id = post.key;
+    nPost.className = "post";
+    postArray.push(nPost.id);
+    document.getElementById("newestPostContainer").prepend(nPost);
 
-        fetch('post.html').then(response => response.text()).then(data => {
-            document.getElementById(nPost.id).innerHTML = data;
+    fetch('post.html').then(response => response.text()).then(data => {
+        document.getElementById(nPost.id).innerHTML = data;
 
-            document.getElementById('poster').id = "poster" + nPost.id;
-            document.getElementById('name').id = "name" + nPost.id;
-            document.getElementById('time').id = "time" + nPost.id;
-            document.getElementById('title').id = "title" + nPost.id;
-            document.getElementById('desc').id = "desc" + nPost.id;
-            document.getElementById('uni').id = "uni" + nPost.id;
-            document.getElementById('likes').id = "likes" + nPost.id;
-            document.getElementById('likeButton').id = "likeButton" + nPost.id;
-            document.getElementById('comments').id = "comments" + nPost.id;
-            document.getElementById('user').id = "user" + nPost.id;
+        document.getElementById('poster').id = "poster" + nPost.id;
+        document.getElementById('name').id = "name" + nPost.id;
+        document.getElementById('time').id = "time" + nPost.id;
+        document.getElementById('title').id = "title" + nPost.id;
+        document.getElementById('desc').id = "desc" + nPost.id;
+        document.getElementById('uni').id = "uni" + nPost.id;
+        document.getElementById('likes').id = "likes" + nPost.id;
+        document.getElementById('likeButton').id = "likeButton" + nPost.id;
+        document.getElementById('comments').id = "comments" + nPost.id;
+        document.getElementById('user').id = "user" + nPost.id;
 
-            document.getElementById("poster" + nPost.id).src = "" + post.child("profileURL").val();
-            document.getElementById("name" + nPost.id).innerHTML = post.child("poster").val();           
-            document.getElementById("time" + nPost.id).innerHTML = post.child("posttime").val();
-            document.getElementById("title" + nPost.id).innerHTML = post.child("title").val();
-            document.getElementById("desc" + nPost.id).innerHTML = post.child("desc").val();
-            get(ref(db, "USERS/" + post.child("posterID").val())).then(user => {
-                document.getElementById("uni" + nPost.id).innerHTML = user.child("DREJTIMI").val();
-            })
-            document.getElementById("likes" + nPost.id).innerHTML = post.child("likes").val();
-            document.getElementById("comments" + nPost.id).innerHTML = post.child("comments").val();
-            document.getElementById("user" + nPost.id).src = localStorage.getItem("profile");
-
-
+        document.getElementById("poster" + nPost.id).src = "" + post.child("profileURL").val();
+        document.getElementById("name" + nPost.id).innerHTML = post.child("poster").val();
+        document.getElementById("time" + nPost.id).innerHTML = post.child("posttime").val();
+        document.getElementById("title" + nPost.id).innerHTML = post.child("title").val();
+        document.getElementById("desc" + nPost.id).innerHTML = post.child("desc").val();
+        get(ref(db, "USERS/" + post.child("posterID").val())).then(user => {
+            document.getElementById("uni" + nPost.id).innerHTML = user.child("DREJTIMI").val();
         })
-            .then(data => {
-                document.getElementById("likeButton" + post.key).addEventListener('click', function () {
-                    const postLikesRef = ref(db, 'POSTS/' + post.key + "/");
+        document.getElementById("likes" + nPost.id).innerHTML = post.child("likes").val();
+        document.getElementById("comments" + nPost.id).innerHTML = post.child("comments").val();
+        document.getElementById("user" + nPost.id).src = localStorage.getItem("profile");
 
-                    var like = false;
+    }).then(data => {
+        document.getElementById("likeButton" + post.key).addEventListener('click', function () {
+            const postLikesRef = ref(db, 'POSTS/' + post.key + "/");
 
-                    onValue(postLikesRef, post => {
-                        if (post.child("likedUsers").exists()) {
-                            var userRef = ref(db, 'POSTS/' + post.key + "/likedUsers/" + localStorage.getItem("sid") + "/");
+            var like = false;
 
-                            post.child("likedUsers").forEach(user => {
-                                if (user.key === localStorage.getItem("sid")) {
-                                    like = true;
-                                }
-                            })
+            onValue(postLikesRef, post => {
+                if (post.child("likedUsers").exists()) {
+                    var userRef = ref(db, 'POSTS/' + post.key + "/likedUsers/" + localStorage.getItem("sid") + "/");
 
-                            if (like == true) {
-                                like = false;
-                                remove(userRef)
-                                get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
-                                    if (Number(snapshot.val()) > 0) {
-                                        update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) - 1) });
-                                    }
-                                })
-                            } else {
-                                like = true;
-                                set(userRef, " ");
-                                get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
-                                    update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) + 1) });
-                                })
-                            }
-
-                        } else {
-                            set(ref(db, 'POSTS/' + post.key + "/likedUsers/" + localStorage.getItem("sid")), "");
-                            get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
-                                update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) + 1) });
-                            })
+                    post.child("likedUsers").forEach(user => {
+                        if (user.key === localStorage.getItem("sid")) {
+                            like = true;
                         }
-                    }, {
-                        onlyOnce: true
                     })
 
-
-                });
-
-
-            }).then(whatever=>{
-                onValue(startCountRef, posts => {
-                    posts.forEach((post) => {
-
-                        if (post.child("likedUsers").exists()) {
-                            var fill = false;
-
-                            post.child("likedUsers").forEach(likedUser => {
-                                if (likedUser.key === localStorage.getItem("sid")) {
-                                    fill = true;
-                                }
-                            })
-
-                            try{
-                                if (fill) {
-                                    document.getElementById("likeButton" + post.key).style.color = "#1877F2";
-                                } else {
-                                    document.getElementById("likeButton" + post.key).style.color = "grey";
-                                }
-                            }catch (error){
+                    if (like == true) {
+                        like = false;
+                        remove(userRef)
+                        get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
+                            if (Number(snapshot.val()) > 0) {
+                                update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) - 1) });
                             }
-                            
+                        })
+                    } else {
+                        like = true;
+                        set(userRef, " ");
+                        get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
+                            update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) + 1) });
+                        })
+                    }
+
+                } else {
+                    set(ref(db, 'POSTS/' + post.key + "/likedUsers/" + localStorage.getItem("sid")), "");
+                    get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
+                        update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) + 1) });
+                    })
+                }
+
+            }, {
+                onlyOnce: true
+            })
+
+
+        });
+
+
+    }).then(whatever => {
+        onValue(startCountRef, posts => {
+            posts.forEach((post) => {
+
+                if (post.child("likedUsers").exists()) {
+                    var fill = false;
+
+                    post.child("likedUsers").forEach(likedUser => {
+                        if (likedUser.key === localStorage.getItem("sid")) {
+                            fill = true;
                         }
+                    })
 
-                        try {
-                            document.getElementById("likes" + post.key).innerHTML = post.child("likes").val();
-                            document.getElementById("comments" + post.key).innerHTML = post.child("comments").val();
-                        } catch (error) {
+                    try {
+                        if (fill) {
+                            document.getElementById("likeButton" + post.key).style.color = "#1877F2";
+                        } else {
+                            document.getElementById("likeButton" + post.key).style.color = "grey";
                         }
+                    } catch (error) {
+                    }
 
-                    });
+                }
 
-                }, {
-                    onlyOnce: true
-                });
-            }).catch(error => console.error('Error loading post:', error));
+                try {
+                    document.getElementById("likes" + post.key).innerHTML = post.child("likes").val();
+                    document.getElementById("comments" + post.key).innerHTML = post.child("comments").val();
+                } catch (error) {
+                }
+
+            });
+        }, {
+            onlyOnce: true
+        });
+
+    }).catch(error => console.error('Error loading post:', error));
+
+    return nPost
 }
 
 onValue(startCountRef, posts => {
@@ -147,21 +151,21 @@ onValue(startCountRef, posts => {
                 }
             })
 
-            try{
+            try {
                 if (fill) {
                     document.getElementById("likeButton" + post.key).style.color = "#1877F2"
                 } else {
                     document.getElementById("likeButton" + post.key).style.color = "grey"
                 }
-            }catch(error){
+            } catch (error) {
             }
-            
-        }else{
-            try{
+
+        } else {
+            try {
                 document.getElementById("likeButton" + post.key).style.color = "grey"
-            }catch(error){
+            } catch (error) {
             }
-         }
+        }
 
         try {
             document.getElementById("likes" + post.key).innerHTML = post.child("likes").val();
@@ -173,8 +177,12 @@ onValue(startCountRef, posts => {
 
 })
 
+var i = 0;
 onChildAdded(startCountRef, post => {
-    getData(post);
+
+    postArray.push(getData(post))
+    console.log(postArray.length)
+
 })
 
 onChildRemoved(startCountRef, post => {

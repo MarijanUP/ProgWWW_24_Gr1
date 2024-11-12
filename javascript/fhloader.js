@@ -1,20 +1,12 @@
-function loadFooter() {
-    fetch('footer.html')
-        .then(response => response.text()).then(data => {
-            document.getElementById('footer').innerHTML = data;
-        })
-    .catch(error => console.error('Error loading footer:', error));
-}
-
 function loadLHeader(){
     fetch('loggedHeader.html').then(response => response.text()).then(data=> {
         document.getElementById('header').innerHTML = data;
 
-        document.getElementById("settingsButton").addEventListener("click", function (event) {
-            console.log("Settings button clicked");  // This should be fine.
-            var dropdownMenu = document.querySelector(".dropdown-menu");
-            dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
-        });
+        // document.getElementById("settingsButton").addEventListener("click", function (event) {
+        //     console.log("Settings button clicked");  // This should be fine.
+        //     var dropdownMenu = document.querySelector(".dropdown-menu");
+        //     dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
+        // });
         
     }).catch(error => console.error('Error loading header:', error))
     console.log()
@@ -22,13 +14,10 @@ function loadLHeader(){
 
 function loadHeader() {
 
-    
     fetch('header.html')
         .then(response => response.text()).then(data => {
             document.getElementById('header').innerHTML = data;
         })
     .catch(error => console.error('Error loading header:', error));
 
-
-    
 }
