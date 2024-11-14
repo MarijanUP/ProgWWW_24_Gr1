@@ -7,10 +7,6 @@
   flex-flow: wrap;
 }
 
-* {
-  font-family: sans-serif;
-}
-
 body,
 html {
   padding: 0px;
@@ -26,7 +22,7 @@ html {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--container-bg-color);
   width: 500px;
   height: 500px;
   margin: -2% 5%;
@@ -37,7 +33,7 @@ html {
   overflow: hidden;
   box-shadow: 0 8px 15px #00000066;
   margin:30px;
-  color: black;
+  color: var(--text-color);
 }
 
 .pfp {
@@ -101,4 +97,29 @@ html {
 #social {
   font-size: 35px;
   margin: 15px;
+}
+
+
+/* Light Mode */
+:root {
+  --bg-color: #FFFFFF;
+  --text-color: #050505;
+  --secondary-text-color: #606770;
+  --container-bg-color: #FFFFFF;
+  --divider-color: #E4E6EB;
+  --button-bg-color: #1877F2;
+  --button-hover-bg-color: #155cb0;
+  --header-bg: var(--bg-color);
+}
+
+/* Dark Mode */
+.darkmode {
+  --bg-color: #18191A;
+  --text-color: #E4E6EB;
+  --secondary-text-color: #B0B3B8;
+  --container-bg-color: #242526;
+  --divider-color: #3A3B3C;
+  --button-bg-color: #1877F2;
+  --button-hover-bg-color: #155cb0;
+  --header-bg: var(--container-bg-color);
 }

@@ -9,7 +9,7 @@ html {
 }
 
 .background {
-  height: 100%;
+  height: auto;
   width: inherit;
   display: flex;
   justify-content: center;
@@ -18,11 +18,12 @@ html {
 }
 
 .mid {
-  background: white;
-  color: #5c0000;
-  width: 100%;
+  background: var(--container-bg-color);
+  color: var(--text-color);
+  width: 80%;
   margin-left: 100px;
   margin-right: 100px;
+  margin:10px;
   height: auto;
   display: flex;
   justify-content: flex-start;
@@ -53,14 +54,14 @@ html {
   height: inherit;
   width: inherit;
   color: white;
-  background: #5c0000;
+  background-color: var(--button-bg-color);
   border-radius: 90px;
   border: none;
   padding: 3px 10px;
 }
 
 .toLogin:hover {
-  background: #880000;
+  background-color: var(--button-hover-bg-color);
   box-shadow: 0 0 5px #00000066;
 }
 
@@ -70,7 +71,30 @@ html {
   margin-bottom: 20px;
   zoom: 150%;
   color: white;
-  background: #5c0000;
   border-radius: 90px;
   border: none;
+}
+
+/* Light Mode */
+:root {
+  --bg-color: #FFFFFF;
+  --text-color: #050505;
+  --secondary-text-color: #606770;
+  --container-bg-color: #FFFFFF;
+  --divider-color: #E4E6EB;
+  --button-bg-color: #1877F2;
+  --button-hover-bg-color: #155cb0;
+  --header-bg: var(--bg-color);
+}
+
+/* Dark Mode */
+.darkmode {
+  --bg-color: #18191A;
+  --text-color: #E4E6EB;
+  --secondary-text-color: #B0B3B8;
+  --container-bg-color: #242526;
+  --divider-color: #3A3B3C;
+  --button-bg-color: #1877F2;
+  --button-hover-bg-color: #155cb0;
+  --header-bg: var(--container-bg-color);
 }

@@ -177,12 +177,10 @@ onValue(startCountRef, posts => {
 
 })
 
-var i = 0;
 onChildAdded(startCountRef, post => {
 
     postArray.push(getData(post))
-    console.log(postArray.length)
-
+    
 })
 
 onChildRemoved(startCountRef, post => {
