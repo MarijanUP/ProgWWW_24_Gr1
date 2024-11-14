@@ -124,7 +124,8 @@ hr {
 #bottom {
     display: flex;
     align-items: center;
-    padding-top: 10px;
+    justify-content: space-evenly;
+    padding-top: 15px;
     border-top: 1px solid var(--divider-color);
 }
 
@@ -133,15 +134,16 @@ hr {
     border: 1px solid var(--divider-color);
     height: 36px;
     width: 70%;
-    margin-left: 10px;
     font-size: 14px;
     padding: 5px 10px;
     color: var(--text-color);
-    background-color: #F0F2F5;
+    background-color: var(--container-bg-color);
+    border-color:var(--button-bg-color);
+    border-width:2px;
 }
 
 #commentText:focus {
-    border-color: #1877F2;
+    border-color: var(--button-bg-color);
     outline: none;
 }
 
