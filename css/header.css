@@ -31,6 +31,7 @@
     --header-bg: var(--container-bg-color);
 }
 
+
 body {
     font-family: "DM Sans", sans-serif;
     background-color: var(--bg-color);
@@ -58,6 +59,7 @@ body {
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
+
 .header-inner {
     height: inherit;
     position: sticky;
@@ -80,6 +82,8 @@ body {
     flex-wrap: wrap;
 }
 
+
+
 .header-navigation a,
 .header-navigation button {
     font-size: 1.125rem;
@@ -93,6 +97,7 @@ body {
     display: none;
     text-decoration: none;
 }
+
 
 /* Hover Effects */
 .header-navigation a:hover:after,
@@ -114,12 +119,18 @@ body {
     left: 0;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 200px) {
     .header-navigation a {
         display: inline-block;
     }
     .header-navigation button {
         display: none;
+    }
+}
+/* LMFAO TEMPORARY */
+@media(max-width:450px){
+    .header-navigation{
+        justify-content: center;
     }
 }
 

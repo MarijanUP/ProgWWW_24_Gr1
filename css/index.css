@@ -5,24 +5,12 @@ html {
   height: 100%;
   font-family: sans-serif;
   width: 100%;
-  overflow-x: hidden;
-}
-
-.background {
-  height: auto;
-  width: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
 .mid {
   background: var(--container-bg-color);
   color: var(--text-color);
   width: 80%;
-  margin-left: 100px;
-  margin-right: 100px;
   margin:10px;
   height: auto;
   display: flex;

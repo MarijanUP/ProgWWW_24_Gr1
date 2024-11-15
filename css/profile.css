@@ -35,6 +35,21 @@ body,html{
     height:auto;
 }
 
+@media(max-width:450px){
+    .profileContainer{
+        width:85%;
+        zoom:80%;
+        height: 700px;
+    }
+
+    .profileInfo{
+        zoom:90%;
+    }
+    
+}
+
+
+
 .profileInfo div{
     margin-bottom: 60px;
 }
