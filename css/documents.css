@@ -3,12 +3,24 @@ table{
     font-size:30px;
 }
 
+
+
 tr{
     margin:100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
+@media (max-width:450px){
+    table{
+      zoom:70%;
+    }
+
+    tr{
+        margin:5px;
+    }
+  }
 
 td{
     background-color: var(--container-bg-color);

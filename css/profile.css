@@ -13,7 +13,7 @@ body,html{
 }
 
 .profileContainer{
-    margin:5%;
+    margin:50px;
     background-color: var(--container-bg-color);
     width:500px;
     height: 700px;
@@ -37,13 +37,7 @@ body,html{
 
 @media(max-width:450px){
     .profileContainer{
-        width:85%;
-        zoom:80%;
-        height: 700px;
-    }
-
-    .profileInfo{
-        zoom:90%;
+        zoom:70%;
     }
     
 }

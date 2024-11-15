@@ -119,12 +119,15 @@ body {
     left: 0;
 }
 
-@media (min-width: 200px) {
+@media (min-width: 300px) {
     .header-navigation a {
         display: inline-block;
     }
     .header-navigation button {
         display: none;
+    }
+    .dropdown-menu{
+        display:block;
     }
 }
 /* LMFAO TEMPORARY */

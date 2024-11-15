@@ -1,13 +1,11 @@
 .background {
-    min-height: 100vh;
-    width: inherit;
-    height:auto;
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
     flex-direction: column;
+    justify-content: center;
+    margin:auto;
   }
-
 
   i{
     color:rgb(24,119,242)

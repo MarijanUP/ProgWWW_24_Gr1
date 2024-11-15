@@ -1,34 +1,42 @@
 body,
 html {
-  margin: auto;
-  padding: 0;
+  padding: 0px;
   height: 100%;
   font-family: sans-serif;
   width: 100%;
+  margin: 0px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .mid {
   background: var(--container-bg-color);
   color: var(--text-color);
-  width: 80%;
+  width: 90%;
   margin:10px;
-  height: auto;
   display: flex;
-  justify-content: flex-start;
-  align-items: top;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  
 
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 
-  overflow: hidden;
   box-shadow: 0 8px 15px #00000066;
 }
 
+@media(max-width:450px){
+  .mid{
+    zoom:70%;
+  }
+}
+
 #welcome {
-  margin-left: 20px;
   font-size: 40px;
   font-weight: bold;
 }
@@ -45,7 +53,8 @@ html {
   background-color: var(--button-bg-color);
   border-radius: 90px;
   border: none;
-  padding: 3px 10px;
+  padding: 3px 20px;
+  font-size: 20px;
 }
 
 .toLogin:hover {
@@ -55,7 +64,6 @@ html {
 
 #loginButtonLink {
   width: 100px;
-  margin-left: 20px;
   margin-bottom: 20px;
   zoom: 150%;
   color: white;

@@ -1,20 +1,7 @@
-.info {
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  flex-flow: wrap;
-}
-
-body,
-html {
-  padding: 0px;
-  height: 100%;
-  font-family: sans-serif;
-  width: 100%;
-  margin: 0px;
-  overflow-x: hidden;
+@media (max-width:450px){
+  .info{
+    zoom:60%;
+  }
 }
 
 .profile {
@@ -25,10 +12,7 @@ html {
   width: 500px;
   height: 500px;
   margin: -2% 5%;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-radius:30px;
   overflow: hidden;
   box-shadow: 0 8px 15px #00000066;
   margin:30px;
@@ -89,13 +73,17 @@ html {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: inherit;
   text-align: center;
+  justify-content: space-evenly;
+  padding-top:10px;
 }
 
 #social {
+  width:40px;
+  height:40px;
   font-size: 35px;
-  margin: 15px;
+  margin: 13px;
+  margin-left:0px;
 }
 
 
