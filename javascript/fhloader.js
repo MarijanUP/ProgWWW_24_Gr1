@@ -1,5 +1,5 @@
 function loadLHeader(){
-    fetch('loggedheader.html').then(response => response.text()).then(data=> {
+    fetch('loggedheader.php').then(response => response.text()).then(data=> {
         document.getElementById('header').innerHTML = data;
         if(localStorage.getItem('mode')==='dark'){
             document.body.classList.toggle('darkmode');
@@ -11,7 +11,7 @@ function loadLHeader(){
 
 function loadHeader() {
 
-    fetch('header.html')
+    fetch('header.php')
         .then(response => response.text()).then(data => {
             document.getElementById('header').innerHTML = data;
             if(localStorage.getItem('mode')==='dark'){

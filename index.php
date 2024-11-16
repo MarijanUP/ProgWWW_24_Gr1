@@ -10,9 +10,11 @@
 
   </head>
 
-  <body onload="loadHeader();">
+  <!-- <body onload="loadHeader();"> -->
 
-    <div id="header"></div>
+  
+
+  <?php include "header.php"; ?>
 
     <div class="background">
       <div class="mid">
@@ -26,7 +28,7 @@
           </p>
         </div>
 
-        <a id="loginButtonLink" href="login.html">
+        <a id="loginButtonLink" href="login.php">
           <button class="toLogin">
             Enter
           </button>

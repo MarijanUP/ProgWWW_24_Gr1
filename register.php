@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="/css/light.css">
     <title>Register</title>
 </head>
-<body onload="loadHeader()">
-    <div id="header"></div>
+<!-- <body onload="loadHeader()">
+    <div id="header"></div> -->
 
+
+    
+    <?php include "header.php"; ?>
 
         <div class="background">
             <div class="switcher">
@@ -66,7 +69,7 @@
             
                     </div>
                 </div>
-                <a id="regLogSwitch" href="login.html">Already have an account?</a>
+                <a id="regLogSwitch" href="login.php">Already have an account?</a>
             </div>
         </div>
 

@@ -26,7 +26,7 @@ function getData(post) {
     postArray.push(nPost.id);
     document.getElementById("newestPostContainer").prepend(nPost);
 
-    fetch('post.html').then(response => response.text()).then(data => {
+    fetch('post.php').then(response => response.text()).then(data => {
         document.getElementById(nPost.id).innerHTML = data;
 
         document.getElementById('poster').id = "poster" + nPost.id;

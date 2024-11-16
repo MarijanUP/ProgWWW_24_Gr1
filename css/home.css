@@ -11,7 +11,7 @@
   padding:15px 20px;
   margin-top:10px;
   margin-bottom:10px;
-  border-radius:10px;
+  border-radius:10px; 
   outline:none;
   background-color: var(--container-bg-color);
   border-color:var(--button-bg-color);

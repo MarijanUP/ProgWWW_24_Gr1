@@ -18,10 +18,8 @@
     </style>
 
   </head>
-  <body onload="loadHeader();">
-    <div id="header">
-
-    </div>
+ 
+      <?php include "header.php"; ?>
 
       <div class="background">
         <div class="info">

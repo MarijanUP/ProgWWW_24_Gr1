@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="css/documents.css">
     <title>Documents</title>
 </head>
-<body onload="loadLHeader()">
-    <div id="header"></div>
-    
+
+<?php include "header.php";
+   if(!$_SESSION['userID']) {
+    header("Location: index.php");
+    exit;
+} ?>
     <div class="background">
 
         <table>

@@ -7,9 +7,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <title>Profile</title>
 </head>
-<body onload="loadLHeader(); loadProfile()">
+<body onload=" loadProfile()">
 
-    <div id="header"></div>
+
+<?php include "header.php"; 
+   if(!$_SESSION['userID']) {
+    header("Location: index.php");
+    exit;
+}
+?>
 
     <div class="background">
         <div class="profileContainer">
@@ -29,8 +35,8 @@
                 </div>
             </div>
             <div class="buttons">
-                <a href="login.html"><button class="button" id="logout">Log out</button></a>
-                <a href="changepass.html"><button class="button" id="changepass">Change password</button></a>
+                <a href="login.php"><button class="button" id="logout">Log out</button></a>
+                <a href="changepass.php"><button class="button" id="changepass">Change password</button></a>
             </div>
         </div>
     </div>
