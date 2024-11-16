@@ -17,6 +17,18 @@
 }
 ?>
 
+<?php 
+
+if(isset($_POST['logout'])){
+    session_destroy();
+    
+    header('Location: login.php');
+    exit;
+}
+
+
+?>
+
     <div class="background">
         <div class="profileContainer">
             <img id="profilePic">
@@ -35,8 +47,16 @@
                 </div>
             </div>
             <div class="buttons">
-                <a href="login.php"><button class="button" id="logout">Log out</button></a>
-                <a href="changepass.php"><button class="button" id="changepass">Change password</button></a>
+
+       
+
+            <form action="" method='post'>
+                
+            <input type="submit" name='logout' id='logout' value='Log out'>
+            </form>
+
+            <!-- <a href="login.php"><button class="button" id="logout">Log out</button></a> -->
+            <a href="changepass.php"><button class="button" id="changepass">Change password</button></a>
             </div>
         </div>
     </div>
