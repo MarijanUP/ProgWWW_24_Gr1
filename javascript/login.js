@@ -50,7 +50,7 @@ loginButton.addEventListener('click', function(){
                         snapshot.child("PROFILE").val()
                     );
                 }).then(promise => {
-                    window.location.href="home.php"
+                    window.location.href="home.html"
                 }).catch((er) =>{
                     console.error(er);
                 });

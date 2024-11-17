@@ -1,0 +1,66 @@
+
+
+
+<head>
+    <link rel="stylesheet" href="css/header.css">
+
+
+</head>
+
+
+<header class="header-outer ">
+	<div class="header-inner responsive-wrapper">
+		<div class="header-logo">
+			<a href="index.html"><img src="catchup/bLogo.png" id="headerLogo" /></a>
+		</div>
+		<nav class="header-navigation">
+		
+      <a href="index.html" class="tab">Main Menu</a>
+      <a href="about.html" class="tab">About Us</a>
+      <a href="login.html" class="tab">Log in</a>
+      
+					
+	
+			
+		</nav>
+
+
+		<div class="header-settings"><button id="theme-switch" 
+			onclick="document.body.classList.toggle('darkmode'); 
+			if(document.body.classList.contains('darkmode')){
+			  localStorage.setItem('mode','dark');
+			  document.getElementById('headerLogo').src='catchup/wLogo.png'}
+			else{
+			  localStorage.setItem('mode','light');
+			  document.getElementById('headerLogo').src='catchup/bLogo.png'}">
+			 
+				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>
+
+			</button>
+		</div>
+
+	
+		
+	</div>
+</header>
+
+<script>
+
+	
+document.getElementById("settings-button").addEventListener("click", function(event) {
+    console.log("Settings button clicked");  // This should be fine.
+    var dropdownMenu = document.querySelector(".dropdown-menu");
+    dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+});
+
+
+
+document.addEventListener("click", function(event) {
+    var isClickInside = document.querySelector(".header-settings").contains(event.target);
+    if (!isClickInside) {
+        document.querySelector(".dropdown-menu").style.display = "none";
+        console.log("fuck you cunt");
+    }
+});
+</script>

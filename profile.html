@@ -7,15 +7,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <title>Profile</title>
 </head>
-<body onload=" loadProfile()">
+<body onload="loadLHeader(); loadProfile()">
 
-
-<?php include "header.php"; 
-   if(!$_SESSION['userID']) {
-    header("Location: index.php");
-    exit;
-}
-?>
+    <div id="header"></div>
 
 <?php 
 
@@ -47,6 +41,7 @@ if(isset($_POST['logout'])){
                 </div>
             </div>
             <div class="buttons">
+<<<<<<< HEAD:profile.php
 
        
 
@@ -57,6 +52,10 @@ if(isset($_POST['logout'])){
 
             <!-- <a href="login.php"><button class="button" id="logout">Log out</button></a> -->
             <a href="changepass.php"><button class="button" id="changepass">Change password</button></a>
+=======
+                <a href="login.html"><button class="button" id="logout">Log out</button></a>
+                <a href="changepass.html"><button class="button" id="changepass">Change password</button></a>
+>>>>>>> parent of 51bb0cd (Nderrime ne shume sende, mbajtja ne men ne qofte se ke bo login, te dark theme, edhe mosaksesimi ne faqet kur sje logged in):profile.html
             </div>
         </div>
     </div>

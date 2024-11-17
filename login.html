@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Log in</title>
+</head>
+<body onload="loadHeader();">
+    <div id="header"></div>
+
+        <div class="background">
+            <div class="switcher">
+                <div class="loginGUI">
+                    <h1>Log in</h1>
+                    <div id="loginInfo">
+    
+                        <div class="loginInput">
+                            <label for="sid"> Student ID </label>
+                            <input class="inp" id="sid" type="text" placeholder="123456789000">    
+                        </div>
+    
+                        <div class="loginInput">
+                            <label for="pass"> Password </label>
+                            <input class="inp" id="pass" type="password" minlength="5" maxlength="20" placeholder="5-20 characters">    
+                        </div>
+                        
+                        <button id="submitButton">Log In</button>
+                        
+                    </div>
+                    
+                </div>
+                <a id="regLogSwitch" href="register.html">Don't have an account?</a>
+            </div>
+        </div>
+
+
+    
+    <script type="module" src="javascript/login.js"></script>
+    <script src="javascript/fhloader.js"></script>
+</body>
+</html>

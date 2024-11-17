@@ -12,17 +12,9 @@
     <script src="javascript/fhloader.js"></script>
     <script type="module" src="javascript/loadPosts.js"></script>   
 
-    <!-- <body onload="loadLHeader();">
+    <body onload="loadLHeader();">
         
-        <div id="header"></div> --> 
-
-    <?php include "header.php"; 
-            if(!$_SESSION['userID']) {
-                header("Location: index.php");
-                exit;
-            }
-    
-    ?>
+        <div id="header"></div>
 
         <div class="background">
             <input type="text" id="search" onkeyup="filterPosts()" placeholder="Search for title or description...">
