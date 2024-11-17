@@ -26,7 +26,12 @@
           </p>
         </div>
 
-        <a id="loginButtonLink" href="login.html">
+        <a id="loginButtonLink" onclick="
+          var name = localStorage.getItem('name')
+          if(!(name==='null' || name===null)){
+              window.location.href='home.html'
+          }
+          ">
           <button class="toLogin">
             Enter
           </button>

@@ -27,19 +27,23 @@ const db = ref(getDatabase(app));
 var loginButton = document.getElementById("submitButton");
 
 loginButton.addEventListener('click', function(){
+    document.getElementById("emptyId").style.display="none";
+    document.getElementById("emptyPass").style.display="none";
+    document.getElementById("userExist").style.display="none";
+    document.getElementById("incoPass").style.display="none";
     var SID = document.getElementById("sid").value;
     var PASS = document.getElementById("pass").value;
 
     if(SID===""){
-        alert("Student ID is empty!");
+        document.getElementById("emptyId").style.display="block"
     }else if(PASS===""){
-        alert("Password is empty!");
-    }else{
+        document.getElementById("emptyPass").style.display="block"
+    }else if(!(SID==="" || PASS==="")){
         get(child(db, `USERS/${SID}`)).then((snapshot) => {
             if (!snapshot.exists()) {
-                alert("User does not exist!");
-            } else if (snapshot.exists() && !snapshot.child("PASS").val()===PASS){
-                alert("Incorrect password!");
+                document.getElementById("userExist").style.display="block"
+            } else if (snapshot.exists() && !(snapshot.child("PASS").val()===PASS)){
+                document.getElementById("incoPass").style.display="block"
             } else if (snapshot.exists() && snapshot.child("PASS").val()===PASS){
                 get(child(db,`USERS/${SID}`)).then(snapshot => {
                     addDetails(
@@ -61,11 +65,3 @@ loginButton.addEventListener('click', function(){
     }
    
 });
-
-function logOut(){
-    localStorage.setItem("name",null)
-    localStorage.setItem("sid",null)
-    localStorage.setItem("bachelor",null)
-    localStorage.setItem("email",null)
-    localStorage.setItem("profile",null)
-}

@@ -6,7 +6,6 @@ function loadLHeader(){
             document.getElementById('headerLogo').src='catchup/wLogo.png'
         }
     }).catch(error => console.error('Error loading header:', error))
-    console.log()
 }
 
 function loadHeader() {
@@ -18,6 +17,7 @@ function loadHeader() {
                 document.body.classList.toggle('darkmode');
                 document.getElementById('headerLogo').src='catchup/wLogo.png'
             }
+            
         })
     .catch(error => console.error('Error loading header:', error));
 

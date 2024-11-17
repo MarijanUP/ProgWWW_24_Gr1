@@ -7,21 +7,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <title>Profile</title>
 </head>
+
+<script>
+    var name = localStorage.getItem("name")
+    if(name==="null" || name===null){
+        window.location.href="login.html"
+    }
+  </script>
+
 <body onload="loadLHeader(); loadProfile()">
 
     <div id="header"></div>
-
-<?php 
-
-if(isset($_POST['logout'])){
-    session_destroy();
-    
-    header('Location: login.php');
-    exit;
-}
-
-
-?>
 
     <div class="background">
         <div class="profileContainer">
@@ -41,25 +37,21 @@ if(isset($_POST['logout'])){
                 </div>
             </div>
             <div class="buttons">
-<<<<<<< HEAD:profile.php
-
-       
-
-            <form action="" method='post'>
-                
-            <input type="submit" name='logout' id='logout' value='Log out'>
-            </form>
-
-            <!-- <a href="login.php"><button class="button" id="logout">Log out</button></a> -->
-            <a href="changepass.php"><button class="button" id="changepass">Change password</button></a>
-=======
-                <a href="login.html"><button class="button" id="logout">Log out</button></a>
+                <a href="login.html"><button onclick="logOut(); console.log(localStorage.getItem('name'))" class="button" id="logout">Log out</button></a>
                 <a href="changepass.html"><button class="button" id="changepass">Change password</button></a>
->>>>>>> parent of 51bb0cd (Nderrime ne shume sende, mbajtja ne men ne qofte se ke bo login, te dark theme, edhe mosaksesimi ne faqet kur sje logged in):profile.html
             </div>
         </div>
     </div>
 
+    <script>
+        function logOut(){
+            localStorage.setItem("name",null)
+            localStorage.setItem("sid",null)
+            localStorage.setItem("bachelor",null)
+            localStorage.setItem("email",null)
+            localStorage.setItem("profile",null)
+        }
+    </script>
     <script src="javascript/profile.js"></script>
     <script src="javascript/fhloader.js"></script>
 </body>

@@ -9,6 +9,13 @@
         <link rel="stylesheet" href="/css/light.css">
     </head>
     
+    <script>
+        var name = localStorage.getItem("name")
+        if(name==="null" || name===null){
+            window.location.href="login.html"
+        }
+    </script>
+    
     <script src="javascript/fhloader.js"></script>
     <script type="module" src="javascript/loadPosts.js"></script>   
 

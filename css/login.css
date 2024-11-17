@@ -122,7 +122,15 @@ h1 {
 }
 
 #bach {
-    width: 178px;
+    width: 66%;
     border-width: 2px;
     color: grey;
 }
+
+.message{
+    display:none;
+    margin:0px;
+    margin-top:2px;
+    color:grey;
+    position:sticky;
+  }

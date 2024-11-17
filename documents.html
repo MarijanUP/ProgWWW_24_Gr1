@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="css/documents.css">
     <title>Documents</title>
 </head>
+
+<script>
+    var name = localStorage.getItem("name")
+    if(name==="null" || name===null){
+        window.location.href="login.html"
+    }
+</script>
+
 <body onload="loadLHeader()">
     <div id="header"></div>
     
