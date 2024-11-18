@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(($_SESSION['sid']) && isset($_SESSION['name'])){
+ 
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,13 +12,6 @@
     <link rel="stylesheet" href="css/documents.css">
     <title>Documents</title>
 </head>
-
-<script>
-    var name = localStorage.getItem("name")
-    if(name==="null" || name===null){
-        window.location.href="login.html"
-    }
-</script>
 
 <body onload="loadLHeader()">
     <div id="header"></div>
@@ -38,3 +37,12 @@
     <script src="javascript/fhloader.js"></script>
 </body>
 </html>
+
+<?php
+
+}else{
+    header("Location: login.php");
+    exit();
+}
+
+?>

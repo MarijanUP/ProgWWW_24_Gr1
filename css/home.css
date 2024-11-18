@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+.postContainer:empty:before {
+  content:"Nothing to see here";
+  color:grey;
+  text-align: start;
+}
+
 #search{
   width:600px;
   padding:15px 20px;
