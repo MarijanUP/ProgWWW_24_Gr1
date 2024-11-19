@@ -36,7 +36,9 @@ if(isset($_SESSION['sid']) && isset($_SESSION['name'])){
                 </div>
             </div>
             <div class="buttons">
-                <a href="login.php"><button class="button" id="logout">Log out</button></a>
+                <form action="logout.php">
+                    <input type="submit" class="button" id="logout" value="Log out"></input>
+                </form>
                 <a href="changepass.html"><button class="button" id="changepass">Change password</button></a>
             </div>
         </div>
