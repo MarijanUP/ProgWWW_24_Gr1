@@ -13,3 +13,19 @@ function filterPosts(){
         }
     }
 }
+
+function filterNotifs(){
+    var filter = document.getElementById("search").value.toUpperCase();
+    var notifs = document.getElementsByClassName("notification");
+    var name, content;
+
+    for(var i=0;i<notifs.length;i++){
+        name = notifs[i].getElementsByClassName("name")[0].textContent
+        content = notifs[i].getElementsByClassName("content")[0].textContent
+        if(name.toUpperCase().indexOf(filter) >-1 ||  content.toUpperCase().indexOf(filter) >-1){
+            notifs[i].style.display = "flex";
+        }else{
+            notifs[i].style.display = "none";
+        }
+    }
+}

@@ -13,14 +13,6 @@ const firebaseConfig = {
     measurementId: "G-KT8PQT8XMT"
   };
 
-function addDetails(name,sid,bachelor,email,profile){
-    localStorage.setItem("name",name);
-    localStorage.setItem("sid",sid);
-    localStorage.setItem("bachelor",bachelor);
-    localStorage.setItem("email",email);
-    localStorage.setItem("profile",profile);
-}
-
 const app = initializeApp(firebaseConfig);
 const db = ref(getDatabase(app));
 
