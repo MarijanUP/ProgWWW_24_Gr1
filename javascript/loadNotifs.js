@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getDatabase, ref, child, onChildAdded, remove, onChildRemoved, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import { getDatabase, ref, child, onChildAdded, onChildRemoved, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 //qtu shkon firebase stuff, nuk i kam qit per shkak te privatesise
 const firebaseConfig = {
@@ -38,6 +38,8 @@ function addNotif(notif){
         document.getElementById('name').id = "name" + nNotif.id;
         document.getElementById('time').id = "time" + nNotif.id;
         document.getElementById('content').id = "content" + nNotif.id;
+        document.getElementById('deleteNotif').id = "deleteNotif" + nNotif.id;
+
 
         document.getElementById("pic" + nNotif.id).src = "" + notif.child("notificationSenderProfileURL").val();
         document.getElementById("name" + nNotif.id).innerHTML = notif.child("notificationSenderName").val();
@@ -48,15 +50,23 @@ function addNotif(notif){
         }else{
             document.getElementById("content" + nNotif.id).innerHTML = "Liked your post!";
         }
+
+        document.getElementById('deleteNotif'+ nNotif.id).addEventListener('click', function (){
+            deleteNotif(nNotif.id);
+        })
     })
 }
     
 function clearNotifs(){
     get(child(ref(db, 'USERS/'+localStorage.getItem('sid')),"NOTIFICATIONS")).then((snapshot) =>{
         if(snapshot.exists()){
-            remove(snapshot)
+            remove(startCountRef);
         }
-    })
+    }) 
+}
+
+function deleteNotif(id){
+   remove(child(startCountRef, id));
 }
 
 document.getElementById("clear").addEventListener("click", clearNotifs);

@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-#notiContainer:empty:before {
+#notiContainer:before:empty {
     content: "Nothing to see here";
     color: grey;
     text-align: start;
@@ -65,7 +65,9 @@ hr{
 
 .notifContent{
     font-size: 14px;
-    padding-bottom:10px;
+    padding-bottom:10px;  
+    text-wrap:wrap;
+    word-break:break-all;
 }
 
 .utility{
@@ -113,6 +115,15 @@ hr{
     }
   
   }
+
+  .fa.fa-close{
+    position: relative;
+    width:0px;
+    right:30px;
+    top:10px;
+    font-size:20px;
+  }
+
 
 /* Light Mode */
 :root {
