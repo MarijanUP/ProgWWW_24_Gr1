@@ -27,9 +27,8 @@ if ((isset($_SESSION['sid']) && isset($_SESSION['name']))) {
                     Clear notifications
                 </button>
             </div>
-            <div id='notiContainer'>
-                
-            </div>
+            <div id='notifier'>You currently have no notifications.</div>
+            <div id='notiContainer'></div>
         </div>
 
 

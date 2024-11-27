@@ -19,6 +19,7 @@ const startCountRef = ref(db, 'USERS/'+localStorage.getItem('sid')+'/NOTIFICATIO
 
 onChildAdded(startCountRef, notif=>{
     addNotif(notif);
+    document.getElementById('notifier').style.display="none";
 })
 
 onChildRemoved(startCountRef, notif=>{
@@ -61,12 +62,16 @@ function clearNotifs(){
     get(child(ref(db, 'USERS/'+localStorage.getItem('sid')),"NOTIFICATIONS")).then((snapshot) =>{
         if(snapshot.exists()){
             remove(startCountRef);
+            
         }
     }) 
 }
 
 function deleteNotif(id){
    remove(child(startCountRef, id));
+    if(document.querySelectorAll('#notiContainer div').length==0){
+        document.getElementById('notifier').style.display="block";
+    }
 }
 
 document.getElementById("clear").addEventListener("click", clearNotifs);

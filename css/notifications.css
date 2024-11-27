@@ -1,15 +1,8 @@
 #notiContainer {
-    margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-#notiContainer:before:empty {
-    content: "Nothing to see here";
-    color: grey;
-    text-align: start;
 }
 
 .notification {
@@ -106,13 +99,23 @@ hr{
   }
   
   @media (max-width: 450px){
-    .notiContainer {
-      margin:0px 20px;
+
+    #notiContainer{
+        width:100%;
     }
   
-    #search{
+    .utility{
       width:90%;
     }
+
+    .notification {
+        width: 95%;
+    }
+
+    #clear{
+        text-wrap: wrap;
+    }
+      
   
   }
 

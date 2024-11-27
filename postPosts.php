@@ -10,6 +10,12 @@ if(($_SESSION['sid']) && isset($_SESSION['name'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/light.css">
     <link rel="stylesheet" href="css/postPosts.css">
+    <script>
+        //kur ban refresh ne post per mos mu ba resubmit
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
     <title>Documents</title>
 </head>
 
@@ -47,9 +53,9 @@ if (isset($_POST['submit'])) {
     curl_close($ch);
 
     if ($httpCode == 200) {
-        echo "Post successfully added to Firebase!";
+        // echo "Post successfully added to Firebase!";
     } else {
-        echo "Failed to add post. Error: $response";
+        // echo "Failed to add post. Error: $response";
     }
 }
 ?>
@@ -60,19 +66,43 @@ if (isset($_POST['submit'])) {
     <div id="header"></div>
     
     <div class="mainContainer">
-  <div class="switcher">
-    <h1>Create Post</h1>
-    <form action="" method="post" enctype="multipart/form-data" class="loginInput">
-      <input type="text" name="title" placeholder="Post Title" class="inp" required>
-      <input type="text" name="description" placeholder="Post Description" class="inp" required>
-      <input type="file" name="file" class="inp">
-      <button type="submit" name="submit" id="submitButton">Submit</button>
-    </form>
-  </div>
-</div>
+        <div class="switcher">
+            <h1>Create Post</h1>
+            <form action="postPosts.php" method="post" class="postInput">
+
+            <label for="title">Title:</label>  
+            <input id='title' type="text" name="title" placeholder="Post Title" class="inp" required>
+
+            <label for="title">Description:</label>  
+
+            <div id='descOuter'>
+                <textarea onkeydown='dis()' onkeyup='dis();' id='desc' name="description" placeholder="Post Description" class="inp" cols='10' rows="10" maxlength="1500" ></textarea>
+                <div id='charcount'>0/1500</div>
+            </div>  
+
+            <input type="file" name="file" class="inp">
+            <div id='buttons'>
+                <button type="clear" name="clear" id="clearButton">Clear</button>
+                <button type="submit" name="submit" id="submitButton">Post</button>
+            </div>
+            </form>
+        </div>
+    </div>
 
 
-
+    <script>
+        function dis(){
+            document.getElementById('charcount').innerHTML = `${document.getElementById('desc').value.length}/1500`;
+            if(document.getElementById('desc').value===""){
+                document.getElementById('charcount').innerHTML =`${0}/1500`;
+            }
+            if(document.getElementById('desc').value.length>1400){
+                document.getElementById('charcount').style.color = "#FF0000";
+            }else{
+                document.getElementById('charcount').style.color = "var(--text-color)";
+            }
+        }
+    </script>
     <script src="javascript/fhloader.js"></script>
 </body>
 </html>
