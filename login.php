@@ -37,7 +37,7 @@
                     <p id="userExist" class="message">User does not exist!</p>
                     <p id="incoPass" class="message">Password is incorrect!</p>
                 </div>
-                <a id="regLogSwitch" href="register.html">Don't have an account?</a>
+                <a id="regLogSwitch" href="register.php">Don't have an account?</a>
             </div>
         </div>
 
