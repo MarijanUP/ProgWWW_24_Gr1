@@ -58,6 +58,8 @@ if(isset($_POST['pass']) && isset($_POST['sid'])){
         return $data;
     }
 
+    //
+
     $sid = validate($_POST['sid']);
     $pass = validate($_POST['pass']);
 
