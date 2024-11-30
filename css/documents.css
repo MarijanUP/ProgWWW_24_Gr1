@@ -3,13 +3,15 @@ table{
     font-size:30px;
 }
 
-
-
 tr{
     margin:100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+a {
+    text-decoration: none;
 }
 
 @media (max-width:450px){

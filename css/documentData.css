@@ -1,0 +1,50 @@
+
+
+.background {
+    background-color: var(--bg-color);
+    padding: 20px;
+}
+
+.row-container {
+    display: flex;
+    flex-direction:column;
+    width: 35%;
+}
+
+
+
+.nothing-to-show-div {
+    font-size: 25px;
+
+}
+
+
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+    background-color: var(--container-bg-color);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+.file-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+.file-item a:hover {
+    color: #007bff;
+}
+
+.separator {
+    border: 0;
+    border-top: 1px solid var(--divider-color);
+    margin: 10px 0;
+}

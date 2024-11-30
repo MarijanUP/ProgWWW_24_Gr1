@@ -20,14 +20,14 @@ if(isset($_SESSION['logged'])){
 
         <table>
             <tr>
-                <td>Ligjerata</td>
-                <td>Afate</td>
-                <td>Projekte</td>
+                <td><a href="documentData.php?document=ligjerata">Ligjerata</a></td>
+                <td><a href="documentData.php?document=afate">Afate</td>
+                <td><a href="documentData.php?document=projekte">Projekte</td>
             </tr>
             <tr>
-                <td>Kuiz</td>
-                <td>Libra</td>
-                <td>Bin</td>
+                <td><a href="documentData.php?document=kuize">Kuiz</a></td>
+                <td><a href="documentData.php?document=libra">Libra</a></td>
+                <td><a href="documentData.php?document=bin">Bin</a></td>
             </tr>
         </table>
 

@@ -1,0 +1,31 @@
+
+{
+  "project_info": {
+    "project_number": "1084488790517",
+    "firebase_url": "https://seks-f1000-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "seks-f1000",
+    "storage_bucket": "seks-f1000.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084488790517:android:03ac4be0a88106eaa3f0bc",
+        "android_client_info": {
+          "package_name": "com.example.sistemielektronikperkomunikiminestudenteve"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjcr_puvy_gVPkruYW0-8p4yW3S2Xo4NM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
