@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(($_SESSION['sid']) && isset($_SESSION['name'])){
+if(isset($_SESSION['logged'])){
  
 ?>
 
@@ -81,6 +81,7 @@ if (isset($_POST['submit'])) {
             </div>  
 
             <input type="file" name="file" class="inp">
+            
             <div id='buttons'>
                 <button type="clear" name="clear" id="clearButton">Clear</button>
                 <button type="submit" name="submit" id="submitButton">Post</button>
@@ -102,7 +103,7 @@ if (isset($_POST['submit'])) {
                 document.getElementById('charcount').style.color = "var(--text-color)";
             }
         }
-    </script>
+        </script>
     <script src="javascript/fhloader.js"></script>
 </body>
 </html>

@@ -5,6 +5,13 @@ function loadLHeader(){
             document.body.classList.toggle('darkmode');
             document.getElementById('headerLogo').src='catchup/wLogo.png'
         }
+    }).then(whatever=>{
+        try{
+            document.getElementById('profilePic').src = localStorage.getItem("profile");
+        }catch(e){
+            
+        }
+       
     }).catch(error => console.error('Error loading header:', error))
 }
 

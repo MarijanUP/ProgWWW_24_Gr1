@@ -75,6 +75,7 @@ if(isset($_POST['pass']) && isset($_POST['sid'])){
     }else if(!($data['PASS']===$_POST['pass'])){
         //wrong pass
     }else{
+        $_SESSION['logged'] = True;
         $_SESSION['name'] = $data['EMRI'];
         $_SESSION['sid'] = $_POST['sid'];
         $_SESSION['bachelor'] = $data['DREJTIMI'];
