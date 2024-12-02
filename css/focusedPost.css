@@ -23,6 +23,7 @@
 }
 
 #container {
+    margin-top:10px;
     font-size: 16px;
     padding: 15px;
     margin-bottom: 15px;
@@ -33,6 +34,66 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.commentContent{
+    font-size: 14px;
+    padding-bottom:10px;  
+    text-wrap:wrap;
+    word-break:break-all;
+}
+
+.comment {
+    margin:5px;
+    display: flex;
+    background-color: var(--container-bg-color);
+    width: 600px;
+    height: auto;
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.commentCropper {
+    margin:10px;
+    display: flex;
+    align-items: center;
+}
+
+.commentPic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info p {
+    margin: 0px;
+}
+
+.info{
+    width:100%;
+    margin-right:10px;
+    margin-top:10px;
+}
+
+.commentName{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.commentTime{
+    font-size: 12px;
+    color: var(--secondary-text-color);
+}
+
+hr{
+    background-color: var(--divider-color);
+    height: 1px;
+    border: none;
+}
+
 
 @media (max-width: 450px){
     #container {
