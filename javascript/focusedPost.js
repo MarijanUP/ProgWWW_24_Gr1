@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getDatabase, ref, onValue, get, onChildAdded,onChildRemoved} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import { getDatabase,ref,remove,set,update, onValue, get, onChildAdded, onChildRemoved,push} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 
 const firebaseConfig = {
@@ -19,8 +19,7 @@ const postID = urlParams.get("postID");
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const startCountRef = ref(db, 'POSTS/'+postID+"/commentSection");
-
+const startCountRef = ref(db, 'POSTS/' + postID + "/commentSection");
 
 if (!postID) {
 
@@ -29,70 +28,165 @@ if (!postID) {
   onValue(postRef, (snapshot) => {
     if (snapshot.exists()) {
       const post = snapshot.val();
-      renderPost(post, snapshot.key);
+      renderPost(post);
     } else {
-      
     }
   });
 }
 
-function renderPost(post, key) {
-  const container = document.getElementById("container");
 
-  //profili
-  document.getElementById("poster").src = post.profileURL;
-  document.getElementById("name").innerText = post.poster;
-  document.getElementById("time").innerText = post.posttime;
 
-  //post details
-  document.getElementById("title").innerText = post.title ;
-  document.getElementById("desc").innerText = post.desc ;
 
-  const userRef = ref(db, `USERS/${post.posterID}`);
+function renderPost(post) {
 
-  get(userRef).then((userSnap) => {
-    if (userSnap.exists()) {
-      document.getElementById("uni").innerText = userSnap.val().DREJTIMI ;
-    } else {
-      document.getElementById("uni").innerText;
+  fetch('post.html').then(response => response.text()).then(data => {
+    document.getElementById('focPost').innerHTML=data;
+    
+    document.getElementById("user").src = localStorage.getItem("profile");
+    document.getElementById("poster").src = "" + post.profileURL;
+    document.getElementById("name").innerHTML = post.poster;
+    document.getElementById("time").innerHTML = post.posttime;
+    document.getElementById("title").innerHTML = post.title;
+    document.getElementById("desc").innerHTML = post.desc;
+    get(ref(db, "USERS/" + post.posterID)).then(user => {
+      document.getElementById("uni").innerHTML = user.child('DREJTIMI').val();
+    });
+    document.getElementById("likes").innerHTML = post.likes
+    document.getElementById("comments").innerHTML = post.comments
+        
+
+  }).then(oops=>{
+
+    // document.getElementById('commentButton').addEventListener('click',function(){
+    //   if(document.getElementById('commentText').value.trim()===""){
+    //     console.log('empty comment');
+    //   }else{
+    //     const newCommentRef = push(ref(db, 'POSTS/'+postID+"/commentSection"));
+    //     var ms = Date.now();
+    //     var d = new Date(ms);
+
+    //     set(newCommentRef, {
+    //       commentDescription: document.getElementById('commentText').value.trim(),
+    //       commentID: newCommentRef.key,
+    //       commentLike : 0,
+    //       commentTime: ('0'+d.getDay()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+" "+('0'+d.getHours()).slice(-2)+":"+('0'+d.getMinutes()).slice(-2)+":"+('0'+d.getSeconds()).slice(-2),
+    //       commentTimeStamp: ms,
+    //       commenterProfileURL:localStorage.getItem('profile'),
+    //       commentuserID:localStorage.getItem('sid'),
+    //       commentuserName:localStorage.getItem('name'),
+    //     });
+        
+    //       get(ref(db,'POSTS/'+postID)).then(post=>{
+    //         update(ref(db,'POSTS/'+postID+"/"),{
+    //           comments: post.child('comments').val()+1
+    //         });
+    //       });
+    //     console.log('commented');
+    //   }
+    // })
+
+    document.getElementById("likeButton").addEventListener('click', function() {
+      const postLikesRef = ref(db, 'POSTS/' + postID + "/");
+
+            var like = false;
+
+            onValue(postLikesRef, post => {
+                if (post.child("likedUsers").exists()) {
+                    var userRef = ref(db, 'POSTS/' + postID + "/likedUsers/" + localStorage.getItem("sid") + "/");
+
+                    post.child("likedUsers").forEach(user => {
+                        if (user.key === localStorage.getItem("sid")) {
+                            like = true;
+                        }
+                    })
+
+                    if (like == true) {
+                        like = false;
+                        remove(userRef)
+                        get(ref(db, 'POSTS/' + postID + "/likes")).then(snapshot => {
+                            if (Number(snapshot.val()) > 0) {
+                                update(ref(db, 'POSTS/' + postID), { likes: "" + (Number(snapshot.val()) - 1) });
+                            }
+                        })
+                    } else {
+                        like = true;
+                        set(userRef, " ");
+                        get(ref(db, 'POSTS/' + postID + "/likes")).then(snapshot => {
+                            update(ref(db, 'POSTS/' + postID), { likes: "" + (Number(snapshot.val()) + 1) });
+                        })
+                    }
+
+                } else {
+                    set(ref(db, 'POSTS/' + postID + "/likedUsers/" + localStorage.getItem("sid")), "");
+                    get(ref(db, 'POSTS/' + postID + "/likes")).then(snapshot => {
+                        update(ref(db, 'POSTS/' + postID), { likes: "" + (Number(snapshot.val()) + 1) });
+                    })
+                }
+
+            }, {
+                onlyOnce: true
+            })
+
+
+    });
+
+  }).then(whatever=>{
+    onValue(ref(db, `POSTS/${postID}`), post =>{
+      document.getElementById('comments').innerHTML = Object.keys(post.child("commentSection").val()).length;
+     
+      if (post.child("likedUsers").exists()) {
+        var fill = false;
+    
+        post.child("likedUsers").forEach(likedUser => {
+            if (likedUser.key === localStorage.getItem("sid")) {
+                fill = true;
+            }
+        })
+    
+        try {
+            if (fill) {
+                document.getElementById("likeButton").style.color = "#1877F2";
+            } else {
+                document.getElementById("likeButton").style.color = "grey";
+            }
+        } catch (error) {
+        }
+    
     }
+    });
+  }).catch(error =>{
+    console.log(error);
   });
-  document.getElementById("likes").innerText = post.likes;
-  document.getElementById("comments").innerText = post.comments;
+
 }
-  
-  
-  console.log(postID);
-  
-  
-  onChildAdded(startCountRef, comment=>{
-    addComment(comment);
+
+onChildAdded(startCountRef, comment => {
+  addComment(comment);
+})
+
+onChildRemoved(startCountRef, comment => {
+  document.getElementById(comment.key).remove()
+})
+
+function addComment(comment) {
+  var nComment = document.createElement("div");
+  nComment.id = comment.key
+  document.getElementById("commentSection").prepend(nComment);
+
+  fetch('comment.html').then(response => response.text()).then(data => {
+    document.getElementById(nComment.id).innerHTML = data;
+
+    document.getElementById('commentPic').id = "commentPic" + nComment.id;
+    document.getElementById('commentName').id = "commentName" + nComment.id;
+    document.getElementById('commentTime').id = "commentTime" + nComment.id;
+    document.getElementById('content').id = "content" + nComment.id;
+
+
+    document.getElementById("commentPic" + nComment.id).src = "" + comment.child("commenterProfileURL").val();
+    document.getElementById("commentName" + nComment.id).innerHTML = comment.child("commentuserName").val();
+    document.getElementById("commentTime" + nComment.id).innerHTML = comment.child("commentTime").val();
+    document.getElementById("content" + nComment.id).innerHTML = comment.child("commentDescription").val();
+
   })
-  
-  onChildRemoved(startCountRef, comment=>{
-    document.getElementById(comment.key).remove()
-  })
-  
-  function addComment(comment){
-    var nComment = document.createElement("div");
-    nComment.id = comment.key
-    nComment.className = "comment";
-    document.getElementById("commentSection").prepend(nComment);
-  
-    fetch('comment.html').then(response => response.text()).then(data => {
-        document.getElementById(nComment.id).innerHTML = data;
-  
-        document.getElementById('commentPic').id = "commentPic" + nComment.id;
-        document.getElementById('commentName').id = "commentName" + nComment.id;
-        document.getElementById('commentTime').id = "commentTime" + nComment.id;
-        document.getElementById('content').id = "content" + nComment.id;
-  
-  
-        document.getElementById("commentPic" + nComment.id).src = "" + comment.child("commenterProfileURL").val();
-        document.getElementById("commentName" + nComment.id).innerHTML = comment.child("commentuserName").val();
-        document.getElementById("commentTime" + nComment.id).innerHTML = comment.child("commentTime").val();
-        document.getElementById("content" + nComment.id).innerHTML = comment.child("commentDescription").val();
-  
-    })
-  }
-      
+}
+

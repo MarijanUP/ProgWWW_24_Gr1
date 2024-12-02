@@ -53,8 +53,8 @@ function getData(post) {
         document.getElementById("likes" + nPost.id).innerHTML = post.child("likes").val();
         document.getElementById("comments" + nPost.id).innerHTML = post.child("comments").val();
         document.getElementById("user" + nPost.id).src = localStorage.getItem("profile");
-        document.getElementById("top").style.cursor = "pointer";
-        document.getElementById("top").addEventListener("click", function(){
+        document.getElementById("mid").style.cursor = "pointer";
+        document.getElementById("mid").addEventListener("click", function(){
             window.location.href = "focusedPost.php?postID="+nPost.id;
             
         })
