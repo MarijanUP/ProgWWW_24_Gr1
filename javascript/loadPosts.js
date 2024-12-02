@@ -27,6 +27,8 @@ function getData(post) {
     document.getElementById("newestPostContainer").prepend(nPost);
 
     fetch('post.html').then(response => response.text()).then(data => {
+
+      
         document.getElementById(nPost.id).innerHTML = data;
 
         document.getElementById('poster').id = "poster" + nPost.id;
@@ -51,6 +53,11 @@ function getData(post) {
         document.getElementById("likes" + nPost.id).innerHTML = post.child("likes").val();
         document.getElementById("comments" + nPost.id).innerHTML = post.child("comments").val();
         document.getElementById("user" + nPost.id).src = localStorage.getItem("profile");
+        document.getElementById("top").style.cursor = "pointer";
+        document.getElementById("top").addEventListener("click", function(){
+            window.location.href = "focusedPost.php?postID="+nPost.id;
+            
+        })
 
     }).then(data => {
         document.getElementById("likeButton" + post.key).addEventListener('click', function () {
