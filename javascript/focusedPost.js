@@ -25,7 +25,7 @@ if (!postID) {
 
 } else {
   const postRef = ref(db, `POSTS/${postID}`);
-  onValue(postRef, (snapshot) => {
+  get(postRef).then(snapshot => {
     if (snapshot.exists()) {
       const post = snapshot.val();
       renderPost(post);
@@ -57,33 +57,34 @@ function renderPost(post) {
 
   }).then(oops=>{
 
-    // document.getElementById('commentButton').addEventListener('click',function(){
-    //   if(document.getElementById('commentText').value.trim()===""){
-    //     console.log('empty comment');
-    //   }else{
-    //     const newCommentRef = push(ref(db, 'POSTS/'+postID+"/commentSection"));
-    //     var ms = Date.now();
-    //     var d = new Date(ms);
+    document.getElementById('commentButton').addEventListener('click',function(){
+      if(document.getElementById('commentText').value.trim()===""){
+        console.log('empty comment');
+      }else{
+        const newCommentRef = push(ref(db, 'POSTS/'+postID+"/commentSection"));
+        var ms = Date.now();
+        var d = new Date(ms);
 
-    //     set(newCommentRef, {
-    //       commentDescription: document.getElementById('commentText').value.trim(),
-    //       commentID: newCommentRef.key,
-    //       commentLike : 0,
-    //       commentTime: ('0'+d.getDay()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+" "+('0'+d.getHours()).slice(-2)+":"+('0'+d.getMinutes()).slice(-2)+":"+('0'+d.getSeconds()).slice(-2),
-    //       commentTimeStamp: ms,
-    //       commenterProfileURL:localStorage.getItem('profile'),
-    //       commentuserID:localStorage.getItem('sid'),
-    //       commentuserName:localStorage.getItem('name'),
-    //     });
+        set(newCommentRef, {
+          commentDescription: document.getElementById('commentText').value.trim(),
+          commentID: newCommentRef.key,
+          commentLike : 0,
+          commentTime: ('0'+d.getDay()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+" "+('0'+d.getHours()).slice(-2)+":"+('0'+d.getMinutes()).slice(-2)+":"+('0'+d.getSeconds()).slice(-2),
+          commentTimeStamp: ms,
+          commenterProfileURL:localStorage.getItem('profile'),
+          commentuserID:localStorage.getItem('sid'),
+          commentuserName:localStorage.getItem('name'),
+        });
         
-    //       get(ref(db,'POSTS/'+postID)).then(post=>{
-    //         update(ref(db,'POSTS/'+postID+"/"),{
-    //           comments: post.child('comments').val()+1
-    //         });
-    //       });
-    //     console.log('commented');
-    //   }
-    // })
+          get(ref(db,'POSTS/'+postID)).then(post=>{
+            update(ref(db,'POSTS/'+postID+"/"),{
+              comments: post.child('comments').val()+1
+            });
+          });
+        console.log('commented');
+        document.getElementById('commentText').value = "";
+      }
+    })
 
     document.getElementById("likeButton").addEventListener('click', function() {
       const postLikesRef = ref(db, 'POSTS/' + postID + "/");
@@ -132,6 +133,8 @@ function renderPost(post) {
 
   }).then(whatever=>{
     onValue(ref(db, `POSTS/${postID}`), post =>{
+      if(post.child('commentSection').exists()){
+        
       document.getElementById('comments').innerHTML = Object.keys(post.child("commentSection").val()).length;
      
       if (post.child("likedUsers").exists()) {
@@ -152,6 +155,7 @@ function renderPost(post) {
         } catch (error) {
         }
     
+      }
     }
     });
   }).catch(error =>{
@@ -159,6 +163,43 @@ function renderPost(post) {
   });
 
 }
+
+const startPostRef = ref(db,'POSTS/');
+
+onValue(startPostRef, post => {
+  
+      if (post.child(postID).child("likedUsers").exists()) {
+          var fill = false;
+
+          post.child(postID).child("likedUsers").forEach(likedUser => {
+              if (likedUser.key === localStorage.getItem("sid")) {
+                  fill = true;
+              }
+          })
+
+          try {
+              if (fill) {
+                  document.getElementById("likeButton").style.color = "#1877F2"
+              } else {
+                  document.getElementById("likeButton").style.color = "grey"
+              }
+          } catch (error) {
+          }
+
+      } else {
+          try {
+              document.getElementById("likeButton").style.color = "grey"
+          } catch (error) {
+          }
+      }
+
+      try {
+          document.getElementById("likes").innerHTML = post.child(postID).child("likes").val();
+          document.getElementById("comments").innerHTML = post.child(postID).child("comments").val();
+      } catch (error) {
+      }
+
+  });
 
 onChildAdded(startCountRef, comment => {
   addComment(comment);
@@ -171,6 +212,7 @@ onChildRemoved(startCountRef, comment => {
 function addComment(comment) {
   var nComment = document.createElement("div");
   nComment.id = comment.key
+  nComment.className= 'comment';
   document.getElementById("commentSection").prepend(nComment);
 
   fetch('comment.html').then(response => response.text()).then(data => {

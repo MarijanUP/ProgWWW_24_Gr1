@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
         "desc" => $description,
         "likedUsers" => [],
         "likes" => 0,
-        "postTimeStamp" => time(),
+        "postTimeStamp" => time()*1000,
         "poster" => $_SESSION["name"],
         "posterID" => $_SESSION["sid"],
         "posttime" => date("d/m H:i:s"), 

@@ -1,10 +1,10 @@
 table{
     color:var(--text-color);
-    font-size:30px;
+    font-size:25px;
 }
 
 tr{
-    margin:100px;
+    margin:50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -30,10 +30,22 @@ td{
     width:250px;
     height:250px;
     display: flex;
-    margin:20px;
+    margin:10px;
     box-shadow: 0 8px 15px var(--divider-color);
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+
+td a{
+    text-decoration: none;
+    color: var(--text-color);
+    width:inherit;
+    height:inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 :root {

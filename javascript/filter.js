@@ -29,3 +29,18 @@ function filterNotifs(){
         }
     }
 }
+
+function filterDocs(){
+    var filter = document.getElementById("search").value.toUpperCase();
+    var files = document.getElementsByClassName("file-item");
+    var title;
+
+    for(var i=0;i<files.length;i++){
+        title = files[i].getElementsByClassName("title")[0].textContent
+        if(title.toUpperCase().indexOf(filter) >-1){
+            files[i].style.display = "flex";
+        }else{
+            files[i].style.display = "none";
+        }
+    }
+}

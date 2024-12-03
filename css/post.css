@@ -135,7 +135,7 @@ hr {
     border-top: 1px solid var(--divider-color);
 }
 
-#commentText {
+.commentText {
     border-radius: 20px;
     border: 1px solid var(--divider-color);
     height: 36px;
@@ -148,12 +148,12 @@ hr {
     border-width:2px;
 }
 
-#commentText:focus {
+.commentText:focus {
     border-color: var(--button-bg-color);
     outline: none;
 }
 
-#commentButton {
+.commentButton {
     border-radius: 20px;
     border: none;
     background-color: var(--button-bg-color);
@@ -166,11 +166,11 @@ hr {
     cursor: pointer;
 }
 
-#commentButton:hover {
+.commentButton:hover {
     background-color: var(--button-hover-bg-color);
 }
 
-#commentText::placeholder {
+.commentText::placeholder {
     color: var(--secondary-text-color);
 }
 
