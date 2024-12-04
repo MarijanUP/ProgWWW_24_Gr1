@@ -40,7 +40,7 @@ if (!postID) {
 function renderPost(post) {
 
   fetch('post.html').then(response => response.text()).then(data => {
-    document.getElementById('focPost').innerHTML=data;
+    document.getElementById('post').innerHTML=data;
     
     document.getElementById("user").src = localStorage.getItem("profile");
     document.getElementById("poster").src = "" + post.profileURL;

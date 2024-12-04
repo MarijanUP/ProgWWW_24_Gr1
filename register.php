@@ -139,13 +139,6 @@ ob_start();
                         </div>
 
                         <div class="loginInput">
-                            <label for="sid">
-                                Student ID
-                            </label>
-                            <input autocomplete="new-text" class="inp" name="sid" type="text" placeholder="123456789000">
-                        </div>
-
-                        <div class="loginInput">
                             <label for="email">
                                 Email
                             </label>
@@ -192,7 +185,6 @@ ob_start();
                         }
 
                         $_SESSION['name'] = $_POST['name'];
-                        $_SESSION['sid'] = $_POST['sid'];
                         $_SESSION['bachelor'] = $_POST['bach'];
                         $_SESSION['email'] = $_POST['email'];
                         $_SESSION['pic'] = 'https://firebasestorage.googleapis.com/v0/b/seks-f1000.appspot.com/o/ProfilePictures%2Fdefult.jpg?alt=media&token=33cf33bd-f5d4-4e34-bf1c-af535d529011';
@@ -217,19 +209,16 @@ ob_start();
                                         </form>
                                     </div>
                                 </div>';
-                        echo $_SESSION['token'];
 
                         if (isset($_POST['verify'])) {
-
-                            echo $_SESSION['token'];
-
-                            echo "    ";
-                            echo $_POST['tokenVerify'];
-                            echo "    ";
 
                             if ($_POST['tokenVerify'] === $_SESSION['token']) {
                                 $_SESSION['logged']=True;
                                 unset($_SESSION['token']);
+
+                                //qtu  bahet log in
+                                
+
                                 header("Location: home.php");
                                 exit;
                             } else {

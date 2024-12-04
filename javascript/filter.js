@@ -7,7 +7,7 @@ function filterPosts(){
         title = posts[i].getElementsByClassName("title")[0].textContent
         desc = posts[i].getElementsByClassName("desc")[0].textContent
         if(title.toUpperCase().indexOf(filter) >-1 ||  desc.toUpperCase().indexOf(filter) >-1){
-            posts[i].style.display = "block";
+            posts[i].style.display = "flex";
         }else{
             posts[i].style.display = "none";
         }

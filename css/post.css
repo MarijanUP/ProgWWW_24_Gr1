@@ -22,11 +22,19 @@
     --header-bg: var(--container-bg-color);
 }
 
+.post{
+    display: flex;
+    justify-content: center;
+    width:inherit;
+    max-width:600px;
+}
+
 #container {
     font-size: 16px;
-    padding: 15px;
     margin-bottom: 15px;
-    width: 600px;
+    padding: 15px;
+    width: 90%;
+    zoom:90%;
     background-color: var(--container-bg-color);
     height: auto;
     font-family: Arial, sans-serif;
@@ -35,8 +43,13 @@
 }
 
 @media (max-width: 450px){
+
+    .post{
+        max-width:450px;
+    }
+
     #container {
-        width: 100%;
+        width: 97%;
     }
   }
 

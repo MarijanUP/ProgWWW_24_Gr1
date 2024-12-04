@@ -13,6 +13,7 @@ if(isset($_SESSION['logged'])){
         <title>Home</title>
         <link rel="stylesheet" href="css/focusedPost.css">
         <link rel="stylesheet" href="css/light.css">
+        <link rel='stylesheet' href='css/post.css'>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     </head>
 
@@ -33,12 +34,15 @@ if(isset($_SESSION['logged'])){
         <div id="header"></div>
 
         <div class="background">
-           
-        <div id="focPost">
-            
-        </div>
+            <div class='postContainer'>
 
-        <div id='commentSection'>  
+                <div class = 'post' id="post">
+
+                </div>
+                
+            </div>
+
+            <div id='commentSection'>  
 
         </div>
         

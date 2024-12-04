@@ -19,8 +19,8 @@
                     <form action="login.php" method="post">
 
                         <div class="loginInput">
-                            <label for="sid"> Student ID </label>
-                            <input name="sid" class="inp" id="sid" type="text" placeholder="123456789000">    
+                            <label for="email"> Email </label>
+                            <input name="email" class="inp" id="email" type="text" placeholder="123456789000">    
                         </div>
     
                         <div class="loginInput">
@@ -32,10 +32,7 @@
                     </form>
 
                     </div>
-                    <p id="emptyId" class="message">Student ID is empty!</p>
-                    <p id="emptyPass" class="message">Password is empty!</p>
-                    <p id="userExist" class="message">User does not exist!</p>
-                    <p id="incoPass" class="message">Password is incorrect!</p>
+                    
                 </div>
                 <a id="regLogSwitch" href="register.php">Don't have an account?</a>
             </div>
@@ -49,7 +46,7 @@
 
 session_start();
 
-if(isset($_POST['pass']) && isset($_POST['sid'])){
+if(isset($_POST['pass']) && isset($_POST['email'])){
 
     function validate($data){
         $data = trim($data);
@@ -58,32 +55,36 @@ if(isset($_POST['pass']) && isset($_POST['sid'])){
         return $data;
     }
 
-    //
 
-    $sid = validate($_POST['sid']);
+    $email = validate($_POST['email']);
     $pass = validate($_POST['pass']);
 
-    $firebase = file_get_contents('https://seks-f1000-default-rtdb.europe-west1.firebasedatabase.app/USERS/'.$_POST["sid"].'.json');
+    $firebase = file_get_contents('https://seks-f1000-default-rtdb.europe-west1.firebasedatabase.app/USERS/.json');
     $data = json_decode($firebase,true);
-    
-    if(empty($sid)){
-        //no sid
-    }else if(empty($pass)){
-        //no pass
-    }else if($firebase==='null'){
-        //user no exist
-    }else if(!($data['PASS']===$_POST['pass'])){
-        //wrong pass
-    }else{
-        $_SESSION['logged'] = True;
-        $_SESSION['name'] = $data['EMRI'];
-        $_SESSION['sid'] = $_POST['sid'];
-        $_SESSION['bachelor'] = $data['DREJTIMI'];
-        $_SESSION['email'] = $data['EMAIL'];
-        $_SESSION['pic'] = $data['PROFILE'];
-        header("Location: home.php");
-        exit();
+
+    foreach(array_keys($data) as $user){
+
+        if(empty($email)){
+            //no email
+        }else if(empty($pass)){
+            //no pass
+        }else if(!($data[$user]['PASS']===$_POST['pass']) && ($data[$user]['EMAIL']==$_POST['email'])){
+            //wrong pass
+        }else if(($data[$user]['PASS']===$_POST['pass']) && ($data[$user]['EMAIL']==$_POST['email'])){
+            $_SESSION['logged'] = True;
+            $_SESSION['sid'] = $user;
+            $_SESSION['name'] = $data[$user]['EMRI'];
+            $_SESSION['bachelor'] = $data[$user]['DREJTIMI'];
+            $_SESSION['email'] = $data[$user]['EMAIL'];
+            $_SESSION['pic'] = $data[$user]['PROFILE'];
+            header("Location: home.php");
+            exit();
+        }
+
     }
+    
+    
+    
 }
 
 ?>

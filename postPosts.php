@@ -54,42 +54,43 @@ if (isset($_POST['submit'])) {
 
     if ($httpCode == 200) {
         // echo "Post successfully added to Firebase!";
+        // Header('Location: focusedPost?postID=-');
+        exit();
     } else {
         // echo "Failed to add post. Error: $response";
     }
 }
 ?>
 
-
-
 <body onload="loadLHeader()">
     <div id="header"></div>
     
-    <div class="mainContainer">
-        <div class="switcher">
-            <h1>Create Post</h1>
-            <form action="postPosts.php" method="post" class="postInput">
+    <div class='background'>
+        <div class="mainContainer">
+            <div class="switcher">
+                <h1>Create Post</h1>
+                <form action="postPosts.php" method="post" class="postInput">
 
-            <label for="title">Title:</label>  
-            <input id='title' type="text" name="title" placeholder="Post Title" class="inp" required>
+                <label for="title">Title:</label>  
+                <input id='title' type="text" name="title" placeholder="Post Title" class="inp" required>
 
-            <label for="title">Description:</label>  
+                <label for="title">Description:</label>  
 
-            <div id='descOuter'>
-                <textarea onkeydown='dis()' onkeyup='dis();' id='desc' name="description" placeholder="Post Description" class="inp" cols='10' rows="10" maxlength="1500" ></textarea>
-                <div id='charcount'>0/1500</div>
-            </div>  
+                <div id='descOuter'>
+                    <textarea onkeydown='dis()' onkeyup='dis();' id='desc' name="description" placeholder="Post Description" class="inp" cols='10' rows="10" maxlength="1500" ></textarea>
+                    <div id='charcount'>0/1500</div>
+                </div>  
 
-            <input type="file" name="file" class="inp">
-            
-            <div id='buttons'>
-                <button type="clear" name="clear" id="clearButton">Clear</button>
-                <button type="submit" name="submit" id="submitButton">Post</button>
+                <input type="file" name="file" class="inp">
+                
+                <div id='buttons'>
+                    <button type="clear" name="clear" id="clearButton">Clear</button>
+                    <button type="submit" name="submit" id="submitButton">Post</button>
+                </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-
 
     <script>
         function dis(){
