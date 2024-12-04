@@ -1,26 +1,50 @@
-<head>
-	<link rel="stylesheet" href="css/header.css">
+<!DOCTYPE html>
+<!--[if IE 8]><html  class="ie8"><![endif]-->
+<!--[if lte IE 9]><html  class="ie9"><![endif]-->
+<html>
+    <head>
+<!-- 
+    <link rel="stylesheet" href="styles.css"> -->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="dns-prefetch" href="//google-analytics.com">
+        
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/light.css">
+		
+		<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+       
+
+
 
 
 </head>
 
-<script>
-	window.location.href="index.html"
-</script>
 
-<header class="header-outer">
-	<div class="header-inner responsive-wrapper">
-		<div class="header-logo">
+<header class="header">
+
+        <div class="header-logo">
 			<a href="index.html"><img src="catchup/bLogo.png" id="headerLogo" /></a>
 		</div>
-		<nav class="header-navigation">
 
-			<a href="index.html" class="tab">Main Menu</a>
-			<a href="about.html" class="tab">About Us</a>
-			<a href="login.php" class="tab">Log in</a>
 
-		</nav>
+    <input type="checkbox" id="check">
 
+    <label for="check" class="icons">
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <i class='bx bx-x' id="close-icon"></i>
+    </label>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav__links" style ="--i:0;">Main Menu</a>
+        <a href="about.html" class="nav__links" style ="--i:1;">About us</a>
+        <a href="login.php" class="nav__links" style ="--i:2;">Log in</a>
+    </nav>
+
+
+    
 		<div class="header-settings">
 			<button id="theme-switch" onclick="document.body.classList.toggle('darkmode'); 
 			if(document.body.classList.contains('darkmode')){
@@ -43,5 +67,5 @@
 
 			</button>
 		</div>
-	</div>
+
 </header>

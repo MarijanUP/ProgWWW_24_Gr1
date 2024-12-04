@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html  class="ie8"><![endif]-->
+<!--[if lte IE 9]><html  class="ie9"><![endif]-->
+<html>
+    <head>
+<!-- 
+    <link rel="stylesheet" href="styles.css"> -->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="dns-prefetch" href="//google-analytics.com">
+         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+       
+
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Aleo:wght@200&family=Montserrat:wght@300&family=PT+Sans&family=Raleway:wght@100;400&family=Roboto:wght@300&display=swap');
 
 
@@ -39,7 +55,7 @@
 .header {
   
   box-sizing: border-box;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -160,7 +176,7 @@
   }
 
   #check:checked~.navbar{
-    height: auto;
+    height: 10rem;
   }
 
 
@@ -220,3 +236,58 @@
 .darkmode #theme-switch svg:last-child {
     display: block;
 }
+
+</style>
+
+
+
+
+</head>
+
+
+<header class="header">
+
+        <div class="header-logo">
+			<a href="index.html"><img src="catchup/bLogo.png" id="headerLogo" /></a>
+		</div>
+
+
+    <input type="checkbox" id="check">
+
+    <label for="check" class="icons">
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <i class='bx bx-x' id="close-icon"></i>
+    </label>
+
+    <nav class="navbar">
+        <a href="https://qytetari.com/" class="nav__links" style ="--i:0;">Main Menu</a>
+        <a href="http://aritechks.com/partners" class="nav__links" style ="--i:1;">About us</a>
+        <a href="http://aritechks.com/klientet" class="nav__links" style ="--i:2;">Log in</a>
+    </nav>
+
+
+    
+		<div class="header-settings">
+			<button id="theme-switch" onclick="document.body.classList.toggle('darkmode'); 
+			if(document.body.classList.contains('darkmode')){
+			  localStorage.setItem('mode','dark');
+			  document.getElementById('headerLogo').src='catchup/wLogo.png'}
+			else{
+			  localStorage.setItem('mode','light');
+			  document.getElementById('headerLogo').src='catchup/bLogo.png'}">
+
+				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+					fill="#5f6368">
+					<path
+						d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
+				</svg>
+				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+					fill="#5f6368">
+					<path
+						d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+				</svg>
+
+			</button>
+		</div>
+
+</header>

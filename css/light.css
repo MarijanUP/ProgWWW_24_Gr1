@@ -11,6 +11,15 @@
     color:rgb(24,119,242)
   }
 
+  #menu-icon {
+   color:var(--text-color);
+  }
+
+
+  #close-icon {
+    color:var(--text-color);
+   }
   body{
     margin:0px;
+    background-color: var(--bg-color);
   }
