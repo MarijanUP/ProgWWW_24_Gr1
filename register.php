@@ -126,23 +126,16 @@ ob_start();
     <div class="background">
         <div class="switcher">
             <div class="loginGUI">
-                <h1>Register</h1>
+            <p id='title'>Register</p>
                 <div id="loginInfo">
 
-                    <form action="" method="post">
-
-                        <div class="loginInput">
-                            <label for="name">
-                                Full Name
-                            </label>
-                            <input autocomplete="new-text" class="inp" name="name" type="text" placeholder="John Doe">
-                        </div>
+                    <form action="" method="post" >
 
                         <div class="loginInput">
                             <label for="email">
                                 Email
                             </label>
-                            <input autocomplete="new-email"" class="inp" name="email" type="email" placeholder="User@student.uni-pr.edu">
+                            <input autocomplete='off' readonly onfocus="this.removeAttribute('readonly');" required class="inp" name="email" type="email" placeholder="john.doe@student.uni-pr.edu">
                         </div>
 
                         <div class="loginInput">
@@ -160,14 +153,14 @@ ob_start();
                             <label for="pass">
                                 Password
                             </label>
-                            <input autocomplete="new-password" class="inp" name="pass" type="password" minlength="5" maxlength="20" placeholder="5-20 characters">
+                            <input autocomplete='off' readonly onfocus="this.removeAttribute('readonly');" required class="inp" name="pass" type="password" minlength="5" maxlength="20" placeholder="5-20 characters">
                         </div>
 
                         <div class="loginInput">
                             <label for="confirmpass">
                                 Confirm Password
                             </label>
-                            <input autocomplete="new-password" class="inp" name="confirmpass" type="password" minlength="5" maxlength="20" placeholder="Confirm password">
+                            <input autocomplete='off' readonly onfocus="this.removeAttribute('readonly');" required class="inp" name="confirmpass" type="password" minlength="5" maxlength="20" placeholder="Confirm password">
                         </div>
 
                         <input type="submit" name="submit" value="Register" id="submitButton">
@@ -176,25 +169,51 @@ ob_start();
 
                     <?php
                     include "sendEmailTest.php";
+                    $regex = '/[A-Za-z]+\\.[A-Za-z0-9]+@student\\.uni-pr\\.edu/i';
                     if (isset($_POST['submit'])) {
-                        $email = $_POST['email'];
-                        $text = "1234567890qwertyuiopasdfghjklzxcvbnm";
-                        $token = "";
-                        for ($i = 0; $i < 6; $i++) {
-                            $token .= strtoupper($text[random_int(0, strlen($text) - 1)]);
-                        }
 
-                        $_SESSION['name'] = $_POST['name'];
-                        $_SESSION['bachelor'] = $_POST['bach'];
-                        $_SESSION['email'] = $_POST['email'];
-                        $_SESSION['pic'] = 'https://firebasestorage.googleapis.com/v0/b/seks-f1000.appspot.com/o/ProfilePictures%2Fdefult.jpg?alt=media&token=33cf33bd-f5d4-4e34-bf1c-af535d529011';
-                        try{
-                            sendEmail($email, $token);
-                            $_SESSION['token'] = $token; //set token only if its sent
-                        }catch(Exception $e){
-                            echo "Couldnt sent token";
-                        }
+                        if(!isset($_POST['email'])){
 
+                        }else if(!preg_match($regex,$_POST['email'])){
+                            echo 'Incorrect email input';
+                        }else if(!($_POST['pass']===$_POST['confirmpass'])){
+                            echo 'Password doesnt match';
+                        }else{
+                            $url = file_get_contents("https://seks-f1000-default-rtdb.europe-west1.firebasedatabase.app/USERS/.json");
+                            $data = json_decode($url,true);
+
+                            foreach(array_keys($data) as $user){
+                                if($data[$user]['EMAIL']===$_POST['email']){
+                                    echo "User already exists";
+                                    return;
+                                }
+                            }
+
+                            $email = $_POST['email'];
+                            $text = "1234567890qwertyuiopasdfghjklzxcvbnm";
+                            $token = "";
+                            for ($i = 0; $i < 6; $i++) {
+                                $token .= strtoupper($text[random_int(0, strlen($text) - 1)]);
+                            }
+    
+                            $nameParts = explode('@',$_POST['email']);
+                            $nameParts = explode('.',$nameParts[0]);
+                            $nameParts[1] = preg_replace('/[0-9]+/', '', $nameParts[1]);
+                            $nameParts[0] = ucfirst($nameParts[0]);
+                            $nameParts[1] = ucfirst($nameParts[1]);
+                            
+                            $_SESSION['name'] = $nameParts[0]." ".$nameParts[1];
+                            $_SESSION['bachelor'] = $_POST['bach'];
+                            $_SESSION['email'] = $_POST['email'];
+                            $_SESSION['pass'] = $_POST['pass'];
+                            $_SESSION['pic'] = 'https://firebasestorage.googleapis.com/v0/b/seks-f1000.appspot.com/o/ProfilePictures%2Fdefult.jpg?alt=media&token=33cf33bd-f5d4-4e34-bf1c-af535d529011';
+                            try{
+                                sendEmail($email, $token);
+                                $_SESSION['token'] = $token; //set token only if its sent
+                            }catch(Exception $e){
+                                echo "Couldnt sent token";
+                            }
+                        }
                     }
 
                     if (isset($_SESSION['token'])) {
@@ -213,14 +232,37 @@ ob_start();
                         if (isset($_POST['verify'])) {
 
                             if ($_POST['tokenVerify'] === $_SESSION['token']) {
-                                $_SESSION['logged']=True;
-                                unset($_SESSION['token']);
-
-                                //qtu  bahet log in
                                 
+                                $data = [
+                                    'DREJTIMI' => $_SESSION['bachelor'],
+                                    "EMAIL" => $_SESSION['email'],
+                                    "EMRI" => $_SESSION['name'],
+                                    "PASS" => $_SESSION['pass'],
+                                    "PROFILE" => "https://firebasestorage.googleapis.com/v0/b/seks-f1000.appspot.com/o/ProfilePictures%2Fdefult.jpg?alt=media&token=33cf33bd-f5d4-4e34-bf1c-af535d529011"
+                                ];
 
-                                header("Location: home.php");
-                                exit;
+                                $url = 'https://seks-f1000-default-rtdb.europe-west1.firebasedatabase.app/USERS/.json';
+
+                                $ch = curl_init($url);
+                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                curl_setopt($ch, CURLOPT_POST, true);
+                                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+                                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+                                $response = curl_exec($ch);
+                                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                                curl_close($ch);
+
+                                $_SESSION['sid'] = ((array)json_decode(curl_multi_getcontent($ch)))['name'];
+
+                                if ($httpCode == 200) {
+                                    $_SESSION['logged']=True;
+                                    unset($_SESSION['token']);
+                                    header("Location: home.php");
+                                    exit();
+                                }else{
+
+                                }
                             } else {
                                 echo '<p>Invalid token.</p>';
                             }

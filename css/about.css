@@ -24,6 +24,7 @@
   box-shadow: 0 8px 15px #00000066;
   margin:30px;
   color: var(--text-color);
+  padding-bottom: 20px;
 }
 
 .pfp {

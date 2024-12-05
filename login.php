@@ -12,7 +12,7 @@
         <div class="background">
             <div class="switcher">
                 <div class="loginGUI">
-                    <h1>Log in</h1>
+                <p id='title'>Log in</p>
                     <div id="loginInfo">
 
 
