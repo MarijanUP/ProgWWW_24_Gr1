@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getDatabase, ref,push, onChildAdded, onValue, onChildRemoved, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import { getDatabase, ref, push, onChildAdded, onValue, onChildRemoved, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 //qtu shkon firebase stuff, nuk i kam qit per shkak te privatesise
 const firebaseConfig = {
@@ -28,7 +28,7 @@ function getData(post) {
 
     fetch('post.html').then(response => response.text()).then(data => {
 
-      
+
         document.getElementById(nPost.id).innerHTML = data;
 
         document.getElementById('poster').id = "poster" + nPost.id;
@@ -56,41 +56,63 @@ function getData(post) {
         document.getElementById("comments" + nPost.id).innerHTML = post.child("comments").val();
         document.getElementById("user" + nPost.id).src = localStorage.getItem("profile");
         document.getElementById("mid").style.cursor = "pointer";
-        document.getElementById("mid").addEventListener("click", function(){
-            window.location.href = "focusedPost.php?postID="+nPost.id;
-            
+        document.getElementById("mid").addEventListener("click", function () {
+            window.location.href = "focusedPost.php?postID=" + nPost.id;
+
         })
 
     }).then(data => {
 
-        document.getElementById('commentButton'+post.key).addEventListener('click',function(){
-            if(document.getElementById('commentText'+post.key).value.trim()===""){
-              console.log('empty comment');
-            }else{
-              const newCommentRef = push(ref(db, 'POSTS/'+post.key+"/commentSection"));
-              var ms = Date.now();
-              var d = new Date(ms);
-      
-              set(newCommentRef, {
-                commentDescription: document.getElementById('commentText'+post.key).value.trim(),
-                commentID: newCommentRef.key,
-                commentLike : 0,
-                commentTime: ('0'+d.getDay()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+" "+('0'+d.getHours()).slice(-2)+":"+('0'+d.getMinutes()).slice(-2)+":"+('0'+d.getSeconds()).slice(-2),
-                commentTimeStamp: ms,
-                commenterProfileURL:localStorage.getItem('profile'),
-                commentuserID:localStorage.getItem('sid'),
-                commentuserName:localStorage.getItem('name'),
-              });
-              
-                get(ref(db,'POSTS/'+post.key)).then(post=>{
-                  update(ref(db,'POSTS/'+post.key+"/"),{
-                    comments: post.child('comments').val()+1
-                  });
+        document.getElementById('commentButton' + post.key).addEventListener('click', function () {
+            if (document.getElementById('commentText' + post.key).value.trim() === "") {
+                console.log('empty comment');
+            } else {
+                const newCommentRef = push(ref(db, 'POSTS/' + post.key + "/commentSection"));
+                var ms = Date.now();
+                var d = new Date(ms);
+                var time = ('0' + d.getDay()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + " " + ('0' + d.getHours()).slice(-2) + ":" + ('0' + d.getMinutes()).slice(-2) + ":" + ('0' + d.getSeconds()).slice(-2);
+
+                set(newCommentRef, {
+                    commentDescription: document.getElementById('commentText' + post.key).value.trim(),
+                    commentID: newCommentRef.key,
+                    commentLike: 0,
+                    commentTime: time,
+                    commentTimeStamp: ms,
+                    commenterProfileURL: localStorage.getItem('profile'),
+                    commentuserID: localStorage.getItem('sid'),
+                    commentuserName: localStorage.getItem('name'),
                 });
-              console.log('commented');
-              document.getElementById('commentText'+post.key).value = "";
+
+                //nese nuk o postimi yt qoje notification per koment
+                if (("" + post.child('posterID').val()) === localStorage.getItem('sid')) {
+
+                } else {
+                    const newNotificationRef = push(ref(db, 'USERS/' + post.child('posterID').val() + "/NOTIFICATIONS"))
+                    set(newNotificationRef, {
+                        notificationOfPost: "" + post.key,
+                        notificationSenderID: "" + post.child('posterID').val(),
+                        notificationSenderName: localStorage.getItem('name'),
+                        notificationSenderProfileURL: localStorage.getItem("profile"),
+                        notificationSent: true,
+                        notificationSentByID: localStorage.getItem('sid'),
+                        notificationText: document.getElementById('commentText' + post.key).value.trim(),
+                        notificationTime: time,
+                        notificationType: "comment",
+                    })
+                }
+
+
+                get(ref(db, 'POSTS/' + post.key)).then(post => {
+                    update(ref(db, 'POSTS/' + post.key + "/"), {
+                        comments: post.child('comments').val() + 1
+                    });
+                });
+
+
+                console.log('commented');
+                document.getElementById('commentText' + post.key).value = "";
             }
-          })
+        })
 
         document.getElementById("likeButton" + post.key).addEventListener('click', function () {
             const postLikesRef = ref(db, 'POSTS/' + post.key + "/");
@@ -107,6 +129,7 @@ function getData(post) {
                         }
                     })
 
+                    //remove like
                     if (like == true) {
                         like = false;
                         remove(userRef)
@@ -115,19 +138,94 @@ function getData(post) {
                                 update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) - 1) });
                             }
                         })
+
+                        //like
                     } else {
+
                         like = true;
                         set(userRef, " ");
                         get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
                             update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) + 1) });
                         })
+
+                        //nese nuk o postimi yt qoje notification per like
+                        if (("" + post.child('posterID').val()) === localStorage.getItem('sid')) {
+
+                        } else {
+                            var likeNotif = false;
+                            get(ref(db, 'USERS/' + post.child('posterID').val())).then(user => {
+                                if (user.child('NOTIFICATIONS').exists()) {
+                                    user.child("NOTIFICATIONS").forEach(notification => {
+                                        if (notification.child("notificationSentByID").val() === localStorage.getItem("sid")) {
+                                            likeNotif = true;
+                                        }
+                                    });
+                                }
+                            }).then(vazhdo => {
+                                if (!likeNotif) {
+                                    const newNotificationRef = push(ref(db, 'USERS/' + post.child('posterID').val() + "/NOTIFICATIONS"))
+                                    var ms = Date.now();
+                                    var d = new Date(ms);
+                                    var time = ('0' + d.getDay()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + " " + ('0' + d.getHours()).slice(-2) + ":" + ('0' + d.getMinutes()).slice(-2) + ":" + ('0' + d.getSeconds()).slice(-2);
+
+                                    set(newNotificationRef, {
+                                        notificationOfPost: "" + post.key,
+                                        notificationSenderID: "" + post.child('posterID').val(),
+                                        notificationSenderName: localStorage.getItem('name'),
+                                        notificationSenderProfileURL: localStorage.getItem("profile"),
+                                        notificationSent: true,
+                                        notificationSentByID: localStorage.getItem('sid'),
+                                        notificationText: "",
+                                        notificationTime: time,
+                                        notificationType: "like",
+                                    })
+                                }
+                            })
+                        }
                     }
 
                 } else {
+                    //like if no users liked before
                     set(ref(db, 'POSTS/' + post.key + "/likedUsers/" + localStorage.getItem("sid")), "");
                     get(ref(db, 'POSTS/' + post.key + "/likes")).then(snapshot => {
                         update(ref(db, 'POSTS/' + post.key), { likes: "" + (Number(snapshot.val()) + 1) });
                     })
+
+                    //nese nuk o postimi yt qoje notification per like
+                    if (("" + post.child('posterID').val()) === localStorage.getItem('sid')) {
+
+                    } else {
+                        var likeNotif = false;
+                        get(ref(db, 'USERS/' + post.child('posterID').val())).then(user => {
+                            if (user.child('NOTIFICATIONS').exists()) {
+                                user.child("NOTIFICATIONS").forEach(notification => {
+                                    if (notification.child("notificationSentByID").val() === localStorage.getItem("sid")) {
+                                        likeNotif = true;
+                                    }
+                                });
+                            }
+                        }).then(vazhdo => {
+                            if (!likeNotif) {
+                                const newNotificationRef = push(ref(db, 'USERS/' + post.child('posterID').val() + "/NOTIFICATIONS"))
+                                var ms = Date.now();
+                                var d = new Date(ms);
+                                var time = ('0' + d.getDay()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + " " + ('0' + d.getHours()).slice(-2) + ":" + ('0' + d.getMinutes()).slice(-2) + ":" + ('0' + d.getSeconds()).slice(-2);
+
+                                set(newNotificationRef, {
+                                    notificationOfPost: "" + post.key,
+                                    notificationSenderID: "" + post.child('posterID').val(),
+                                    notificationSenderName: localStorage.getItem('name'),
+                                    notificationSenderProfileURL: localStorage.getItem("profile"),
+                                    notificationSent: true,
+                                    notificationSentByID: localStorage.getItem('sid'),
+                                    notificationText: "",
+                                    notificationTime: time,
+                                    notificationType: "like",
+                                })
+                            }
+                        })
+                    }
+
                 }
 
             }, {
@@ -173,7 +271,7 @@ function getData(post) {
             onlyOnce: true
         });
 
-    
+
     }).catch(error => console.error('Error loading post:', error));
 
     return nPost
@@ -220,7 +318,7 @@ onValue(startCountRef, posts => {
 onChildAdded(startCountRef, post => {
 
     postArray.push(getData(post))
-    
+
 })
 
 onChildRemoved(startCountRef, post => {

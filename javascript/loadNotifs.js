@@ -15,18 +15,18 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const startCountRef = ref(db, 'USERS/'+localStorage.getItem('sid')+'/NOTIFICATIONS');
+const startCountRef = ref(db, 'USERS/' + localStorage.getItem('sid') + '/NOTIFICATIONS');
 
-onChildAdded(startCountRef, notif=>{
+onChildAdded(startCountRef, notif => {
     addNotif(notif);
-    document.getElementById('notifier').style.display="none";
+    document.getElementById('notifier').style.display = "none";
 })
 
-onChildRemoved(startCountRef, notif=>{
+onChildRemoved(startCountRef, notif => {
     document.getElementById(notif.key).remove()
 })
 
-function addNotif(notif){
+function addNotif(notif) {
     var nNotif = document.createElement("div");
     nNotif.id = notif.key
     nNotif.className = "notification";
@@ -46,31 +46,31 @@ function addNotif(notif){
         document.getElementById("name" + nNotif.id).innerHTML = notif.child("notificationSenderName").val();
         document.getElementById("time" + nNotif.id).innerHTML = notif.child("notificationTime").val();
 
-        if(notif.child("notificationType").val()==="comment"){
-            document.getElementById("content" + nNotif.id).innerHTML = notif.child("notificationText").val();
-        }else{
-            document.getElementById("content" + nNotif.id).innerHTML = "Liked your post!";
+        if (notif.child("notificationType").val() === "comment") {
+            document.getElementById("content" + nNotif.id).innerHTML = "Commented on your <a style='text-decoration:underline; color:var(--text-color);' href=focusedPost.php?postID=" + notif.child("notificationOfPost").val() + ">post</a>: <br><br>" + notif.child("notificationText").val();
+        } else {
+            document.getElementById("content" + nNotif.id).innerHTML = "Liked your <a style='text-decoration:underline; color:var(--text-color);' href=focusedPost.php?postID=" + notif.child("notificationOfPost").val() + ">post</a>";
         }
 
-        document.getElementById('deleteNotif'+ nNotif.id).addEventListener('click', function (){
+        document.getElementById('deleteNotif' + nNotif.id).addEventListener('click', function () {
             deleteNotif(nNotif.id);
         })
     })
 }
-    
-function clearNotifs(){
-    get(child(ref(db, 'USERS/'+localStorage.getItem('sid')),"NOTIFICATIONS")).then((snapshot) =>{
-        if(snapshot.exists()){
+
+function clearNotifs() {
+    get(child(ref(db, 'USERS/' + localStorage.getItem('sid')), "NOTIFICATIONS")).then((snapshot) => {
+        if (snapshot.exists()) {
             remove(startCountRef);
-            
+
         }
-    }) 
+    })
 }
 
-function deleteNotif(id){
-   remove(child(startCountRef, id));
-    if(document.querySelectorAll('#notiContainer div').length==0){
-        document.getElementById('notifier').style.display="block";
+function deleteNotif(id) {
+    remove(child(startCountRef, id));
+    if (document.querySelectorAll('#notiContainer div').length == 0) {
+        document.getElementById('notifier').style.display = "block";
     }
 }
 

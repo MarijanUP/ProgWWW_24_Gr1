@@ -21,15 +21,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width:450px){
-    #notiContainer{
-        width:90%;
-    }
-    .notification{
-        margin:5px 10px;
-    }
-}
-
 .cropper {
     margin:10px;
     display: flex;
@@ -94,6 +85,11 @@ hr{
     font-size: 14px;
     text-wrap: nowrap;
     margin-left:10px;
+  }
+
+  #notifier{
+    margin-top:10px;
+    color:var(--text-color);
   }
 
 

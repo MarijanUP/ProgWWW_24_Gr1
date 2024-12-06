@@ -14,8 +14,7 @@
 }
 
 .nothing-to-show-div {
-    font-size: 25px;
-
+    color:var(--text-color)
 }
 
 

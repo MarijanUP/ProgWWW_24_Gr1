@@ -90,7 +90,7 @@ if (isset($_SESSION['logged'])) {
 
                     if (result.items.length === 0) {
                         const rowcontainer = document.getElementById('nothing-to-show-div');
-                        rowcontainer.innerHTML = "Nothing to show here.....";
+                        rowcontainer.innerHTML = "No documents available";
                     } else {
 
                         const rowContainer = document.getElementById('row-container');
