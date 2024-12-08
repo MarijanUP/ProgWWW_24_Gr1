@@ -1,0 +1,61 @@
+body {
+    /* background-color: rebeccapurple; */
+    background-image: url("https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment:fixed;
+}
+
+section {
+    margin: 20px auto;
+    width: 80%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #aaa;
+}
+.div1 {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation-name: divvv;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    /* animation-direction: alternate; */
+}
+
+
+    @keyframes divvv {
+    
+        0% {
+            left: 0px;
+            top:0px;
+            background-color: red;
+            transform: rotateX(45deg);
+        }
+        25% {
+            left:200px;
+            top: 0;
+            background-color:aqua;
+            transform: rotateY(45deg);
+        }
+        50% {
+            left: 200px;
+            top:200px;
+            background-color: black;
+            transform: scale(1.2);
+        }
+        75% {
+            left:0px;
+            top:200px;
+            background-color: cadetblue;
+            transform: scale(0.5);
+            transform: rotateY(90deg);
+        }
+
+        100% {
+            left:0px;
+            top:0px;
+            background-color: red;
+        }
+    }
