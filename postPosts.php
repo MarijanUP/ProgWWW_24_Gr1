@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
                 <label class='labels' for="title">Description:</label>  
 
                 <div id='descOuter'>
-                    <textarea autocomplete="new-text" onkeydown='dis()' onkeyup='dis();' id='desc' name="description" placeholder="Post Description" class="inp" cols='10' rows="10" maxlength="1500" ></textarea>
+                    <textarea required="5" autocomplete="new-text" onkeydown='dis()' onkeyup='dis();' id='desc' name="description" placeholder="Post Description" class="inp" cols='10' rows="10" maxlength="1500" ></textarea>
                     <div id='charcount'>0/1500</div>
                 </div>  
 

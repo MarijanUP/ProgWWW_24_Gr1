@@ -20,7 +20,7 @@
 
                         <div class="loginInput">
                             <label for="email"> Email </label>
-                            <input name="email" class="inp" id="email" type="text" placeholder="123456789000">    
+                            <input name="email" class="inp" id="email" type="text" placeholder="john.doe@student.uni-pr.edu">    
                         </div>
     
                         <div class="loginInput">

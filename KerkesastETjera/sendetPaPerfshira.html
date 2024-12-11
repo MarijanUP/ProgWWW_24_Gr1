@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sendetPaPerfshira.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Sendet e pa perfshira</title>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+    
+        function dragStart(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+    
+        function dragDrop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.append(document.getElementById(data));
+        }
+      </script>
+    <style>
+
+        .dragndrop{
+            width:50px;
+            height:50px;
+            border: 2px solid black;
+            margin:10px;
+        }
+
+        .p {
+            font-size: 10px;
+            color:red;
+        }
+
+        .paragraph-background {
+            background-color: blue;
+        }
+        .font-size-color {
+            color: red;
+            font-size: 30px;
+        }
+
+        .perdorimi-css-text::before {
+            content: "Teksti me perpara - ";
+        }
+        #foto1 {
+            float:left;
+            margin: 10px;
+        }
+        #foto2 {
+            float:right;
+            margin:10px
+        }
+
+        ul.a {
+        list-style-type: circle;
+        }
+
+        ul.b {
+        list-style-type: square;
+        }
+
+        ol.c {
+        list-style-type: upper-roman;
+        }
+
+        ol.d {
+        list-style-type: lower-alpha;
+        }
+
+        .kyeshtediv {
+            background-color: red;
+        }
+
+        span {
+            background-color: red;
+            color:white;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .highlight {
+            background-color: #f2f2f2;
+        }
+
+
+        .email {
+            width: 30%;
+            height: auto;
+            padding: 30px;
+            background-color: pink;
+            
+        }
+
+        #inputss {
+            width: 90%;
+            padding: 5px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: rgb(238, 138, 184);
+            border-color: palevioletred; 
+        }
+        label {
+            margin-left:10px ;
+        }
+        textarea {
+            width: 90%;
+            padding: 5px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: rgb(238, 138, 184);
+            border-color: palevioletred; 
+        }
+
+        #funny:nth-child(odd) {
+            color:purple;
+        }
+        #funny:nth-child(even) {
+            color:red;
+        }
+
+        #email-send {
+            padding: 10px;
+            width: 50%;
+            margin:5px 25% ;
+            background-color:rgb(83, 8, 61);
+            color:aqua;
+            border-radius: 18px;
+        }
+
+        @font-face {
+            font-family: "Bitstream Vera Serif Bold";
+            src: url("https://mdn.github.io/shared-assets/fonts/VeraSeBd.ttf");
+            }
+
+        section{
+            font-family: "Bitstream Vera Serif Bold";
+        }
+
+    </style>
+</head>
+<body>
+    <div id="maca">
+        <header>this is the header
+
+            <nav>
+                Navigimi:
+                <a href="https://youtube.com" target="_blank">Youtube</a>
+                <a href="https://google.com" target="_blank">Google</a>
+                <a href="https://Yahoo.com" target="_blank">Yahoo</a>
+            </nav>
+
+        </header>
+<h1>h1</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+<hr>
+
+<p>Ky eshte nje paragraph</p>
+<hr>
+<br>
+<address></address>
+
+<p>Ky eshte nje test <strong>Bold</strong> dhe ky nje <i>italic</i></p>
+<address>Rruga Eqrem Qabej</address>
+
+<hr>
+<a href="">Google Chrome</a><br>
+<a href="login.php">Login page</a><br>
+<a href="#section1">Qetash e boj ku shtoj ma shume sende</a><br>
+<a href="https://firebasestorage.googleapis.com/v0/b/seks-f1000.appspot.com/o/ProfilePictures%2Fdefult.png?alt=media&token=4df63640-3969-4b27-b1cc-3b48f1abdcf4" target="_blank">Foto</a>
+<br>
+<a href="mailto:catchup-ks@gmail.com">Mail to</a>
+<a href="#section1" id="id-e-id">Using ID</a>
+</div>
+<hr>
+<p class="p">Perdorimi css internal</p>
+<p style="color:purple"">Perdorimi i css inline</p>
+<p class="paragraph-background">Perdorimi i background</p>
+<p class="font-size-color">Percaktimi i njyrave dhe size</p>
+
+<p class="perdorimi-css-text">Teksti prapa</p>
+<p></p>
+<hr>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/750px-Square_-_black_simple.svg.png?20210311042606">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/750px-Square_-_black_simple.svg.png?20210311042606" alt="alt">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/750px-Square_-_black_simple.svg.png?20210311042606" alt="" width="100px" height="100px">
+
+    <p>kasbfkuafnasnkfnasfjaksfkasbfkasfaksnfkasfkak kkakshfkjasfhaosfnk nakka ksfasjfa jbf jkasbjf ajkfj abjksf ajsfajbkfb abjk jbkajsbkf abjkf</p>
+    <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/750px-Square_-_black_simple.svg.png?20210311042606" alt="alt" width="100px" height="100px" id="foto1"></p>
+    <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/750px-Square_-_black_simple.svg.png?20210311042606" alt="alt" width="100px" height="100px" id="foto2"></p>
+    <p> absjkfbasbkfak;jsfasbk jfa kajsbdabks diad ausdkj aksjd akjsdkj asd kajsbdk abskda jsdj baksjkd absdkj asjkbd abjksbdjk asjkdb asdk jasbdjk abjsdjk asbjkdb ajsdbjk akjsdbjk asbjkkj;bf abkskjfabjskfa bjksfa bjjabskf kabj lkas fnklfaknl afkaf jbk asfbjkfbjkfasbjksaf sbffasbjsfjbk faksjf abjskf </p>kjasjkbf jaskfbasjkfjasjk'bf asjkbfabjk;sfkjabf akj;sfn auihr  siu fkuasnf akbsf;kj a ajsbkfak bjksfasbj fasbjkf jabjksf jajf asjbkfja bjksfasjbkf asjkbf askbfjkas bjkfj asbjkf jasbjkfjasjbkfbasbj fbasfjk asbjksfjkasbjk jbafjk asjkbfjk ajkbsfjasfjk abjksfka jbksfjaksjbf abjksfjk jbaksfjk ajbkfsjkas jbkfjajbk sjbfajsbk fjas bjkasjbfjabjk sfjaksjf abjksf jkasjkbfjasjbkf jbaksjbkfba jbk jbkasjbkfa jbskfj ajbsf</p>
+   
+
+    <p></p>
+    <p></p>
+    <p></p>
+
+<hr>
+    <ul>
+        <li>?</li>
+        <li>?</li>
+        <li>?</li>
+    </ul>
+
+    <ol>
+        <li>?</li>
+        <li>?</li>
+        <li>?</li>
+    </ol>
+
+    <hr>
+
+    <ul class="a">
+        <li>?</li>
+        <li>?</li>
+        <li>?</li>
+    </ul>
+      
+    <ul class="b">
+        <li>!!</li>
+        <li>!!</li>
+        <li>!!</li>
+    </ul>
+      
+    <ol class="c">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+      
+    <ol class="d">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+
+
+
+    <ul>
+        <li><ul>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+        </ul></li>
+        
+        <li><ol>
+            <li>b</li>
+            <li>b</li>
+            <li>b</li>
+        </ol></li>
+    </ul>
+
+    <dl>
+        <dt>asndasd</dt>
+            <dd>lksdfnaklsfsanfl</dd>
+        <dt>asdasd</dt>
+            <dd>jnaskfnkasjfna</dd>
+      </dl>
+
+      
+    <hr>
+
+
+    <div class="kyeshtediv"> Hello une jam nje div</div>
+    
+    <p>Une jam nje <span>span ha ha</span></p>
+
+    <table>
+        <tr>
+            <th>Detyrat teknike</th>
+            <th>Plotësimi</th>
+        </tr>
+        <tr>
+            <td>Krijimi i tabelave</td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Kreu 1</th>
+                        <th>Kreu 2</th>
+                    </tr>
+                    <tr>
+                        <td>Rresht 1</td>
+                        <td>Rresht 1</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Krijimi i "borders" dhe rregullimi i formatit të tyre</td>
+            <td>
+                <table style="border: 2px solid blue;">
+                    <tr>
+                        <td>Me Border</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Rregullimi i "table cellspacing" dhe "cellpadding"</td>
+            <td>
+                <table cellspacing="5" cellpadding="10" style="border: 1px solid black;">
+                    <tr>
+                        <td>Hapësirë</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Përdorimi i tagjeve brenda tabelave</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <b>Bold</b>, <i>Italic</i>, dhe <u>Underline</u>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Krijimi i tabelave shumëkolonëshe</td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Kolona 1</th>
+                        <th>Kolona 2</th>
+                        <th rowspan="2">Kolona 3</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">1</td>
+                         
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Ndryshimi i ngjyrës së prapavijës së qelizës</td>
+            <td>
+                <table>
+                    <tr>
+                        <td class="highlight">qekuzaaa</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+<hr>
+
+
+<form action="#" method="get" autocomplete title="Hello" spellcheck="false" id="form" valign="middle" tabindex="0">
+
+    <input type="text" name="text"><br>
+    <input type="password" name="password">
+
+    <br>
+    <input type="radio" name="radio1" value="radaio1">
+    <label for="radio1">radio1</label><br>
+    <input type="radio" name="radio3" value="radaio2">
+    <label for="radio3">radio2</label><br>
+    <input type="radio" name="radio3" value="radaio3">
+    <label for="radio3">radio2</label><br>
+
+    <br><br><br>
+
+    <input type="checkbox" name="checkbox1" value="checkbox1">
+    <label for="checkbox1">radio1</label><br>
+    <input type="checkbox" name="checkbox2" value="checkbox2">
+    <label for="checkbox2">checkbox2</label><br>
+    <input type="checkbox" name="checkbox3" value="checkbox3">
+    <label for="checkbox3">checkbox3</label><br>
+
+    <input type="submit" name="submit" id="button">
+    <input type="button" name="button" id="button" value="button input">
+    <button>button button</button>
+
+    <keygen name="key">
+
+    <input list="list" name="lista" id="thelist">
+
+    <datalist id="list">
+        <option value="opt1">Option 1</option>
+        <option value="opt2">Option 2</option>
+        <option value="opt3">Option 3</option>
+    </datalist>
+
+    <output for="radio1 radio2">100</output>
+
+</form>
+
+<form action="#" method="post">
+<br>
+
+    <div class="email">
+
+        <label for="email" id="funny">Email</label><br>
+        <input type="text" name="email" placeholder="email" id="inputss"><br>
+        <label for="" id="funny">Subject</label><br>
+        <input type="text" name="subject" placeholder="subject" id="inputss"><br>
+
+        <label for="" id="funny">Description</label>
+        <textarea name="description" id="textareaaa" placeholder="description" id="inputs" rows="5"></textarea>
+    
+        <input type="submit" id="email-send">
+    </div>
+
+</form>
+
+
+<p id="transgender">Une jam jasini por kur e klikoj jam marijani???????</p>
+
+
+<canvas id="canvasFutbolli" width="300" height="300" style="border:1px solid black;"></canvas>
+<canvas id="canvasGradient" width="300" height="200" style="border:1px solid black;"></canvas>
+<svg width="300" height="200" style="border:1px solid black;">
+    <circle cx="100" cy="100" r="50" fill="blue" />
+    <rect x="150" y="50" width="100" height="100" fill="orange" />
+</svg>
+<figure>
+    <img src="https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg" alt="Shembull Figure" style="width: 10%;">
+    <figcaption>Kjo është një figurë me përshkrim</figcaption>
+</figure>
+
+<section>
+    Ky eshte nje section
+</section>
+<article>
+    ky eshte nje artikull
+</article>
+
+
+<!-- <div class="div1"></div> -->
+<div class="div2"></div>
+<div class="div3"></div>
+
+<div class="dragndrop" 
+ondrop="dragDrop(event)" 
+    ondragover="allowDrop(event)">
+</div>
+
+<div class="dragndrop" 
+    ondrop="dragDrop(event)" 
+    ondragover="allowDrop(event)">
+    <img id="drag1" width="50" height="50" src="https://plus.unsplash.com/premium_photo-1673967831980-1d377baaded2?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2F0c3xlbnwwfHwwfHx8MA%3D%3D" alt="maqoku" draggable="true" ondragstart="dragStart(event)">
+</div>
+
+<audio controls src="https://www.myinstants.com/media/sounds/minecraft-villager-sound-effect.mp3">Audio</audio>
+<audio controls src="https://www.myinstants.com/media/sounds/you-are-impostor-sound.mp3">Audio</audio>
+
+<video controls>
+    <source src="musicvideo.mp4">
+</video>
+
+<video controls src="musicvideo2.mp4"></video>
+
+<article>article 2 (tjetri o ma nalt)</article>
+<article>spo di qka me qit tjeter</article>
+<article>prof pse gjith kto kerkesa aaaaaaa</article>
+<article>ok mdoket u ban 8 copa</article>
+
+<button onclick="warn()">Buttoni per warning <br> <br> <br></button>
+<button onclick="thuaj('qkemiii')">Buttoni per pershendetje <br> <br> <br></button>
+
+<button id="hide">Hideeeeeeeeeee</button>
+<button id="show">Showwwwwwwwwww</button>
+<div id="jqueryid">
+
+</div>
+
+<div class="jqueryclass">
+    
+</div>
+
+<footer>this is the footer</footer>
+
+</body>
+
+<script>
+    var lejohet;
+    var mosha = 17;
+    mosha = 18;
+    if(mosha>=18){
+        lejohet = "lejohet hyrja"
+    }else{
+        lejohet = "nuk lejohet hyrja";
+    }
+    console.log(lejohet);
+
+    let c = 3;
+    {
+        let b = 5;
+        console.log(c+b);
+    }
+    console.log(c);
+    c++;
+    c+=2;
+    c*=10;
+    console.log(c > 2 && c<100)
+    var qkaPoThot = "aerokrem"
+    switch(qkaPoThot){
+        case "hi":
+            console.log("po thot hi")
+            break;
+        case "hello":
+            console.log("po thot hello")
+            break;
+        default:
+            console.log("so ka fol shqip")
+    }
+
+    for(var i =0;i<5;i++){//sdi pse veq hajt
+        console.log(i*(i-1));
+    }
+    let diqka = 5;
+    while(diqka>0){
+        console.log(diqka--);
+    }
+
+    let numri1 = 10;
+    try{
+        if(isNaN(numri1)) throw "nuk eshte numer";
+        if(numri1>10) throw "koka ba i madh numri";
+        if(numri1<=10) throw "koka met i vogel";
+    }catch(err){
+        console.log(err);
+    }
+
+    const konstant = 32;
+    
+
+    let vertet = true;
+    let jovertet = false;
+
+    let ngjyra = "Kuqe";
+
+    let nrmepik = 7.5;
+
+    let array = [1,2,3,4];
+
+    console.log(array[0])
+
+    let objekt = {
+        qelsi: "vlera",
+        qelsi2: "vlera2"
+    }
+
+    const date = new Date();
+    console.log(date);
+
+    function warn(){
+        alert("kqyr permas")
+    }
+
+    function thuaj(parametri){
+        console.log(parametri)
+    }
+
+document.getElementById("transgender").addEventListener("click", () => {
+    document.getElementById("transgender").innerHTML = "WHAAAAAAAAAAATT!!!???"
+});
+
+function emaivalid(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function numervalid(phone) {
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+}
+
+function passwordIMire(password) {
+    return password.length >= 8;
+}
+
+function Person(emri, mosha) {
+    this.emri = emri;
+    this.mosha = mosha;
+}
+
+function Makine(lloji, modeli) {
+    this.lloji = lloji;
+    this.modeli = modeli;
+}
+
+function Liber(titulli, autori) {
+    this.titulli = titulli;
+    this.autori = autori;
+}
+
+
+
+const person = new Person("Bukuroshi", 30);
+const makine = new Makine("Ferrari", "Sdi tybe");
+const liber = new Liber("2024", "Atifete Jahjaga");
+
+console.log(person, makine, liber);
+
+console.log(Number.MAX_VALUE); 
+console.log(Number.isNaN(123)); 
+console.log((123.456).toExponential(2));
+console.log((123).toString());
+
+const teksti = "Ktu ka shum pak kerkesa!";
+const tekstiMas = teksti.replace("pak", "");
+console.log(tekstiMas);
+
+const sot = new Date();
+console.log("Sot:", sot.toDateString());
+console.log("Koha:", sot.toTimeString());
+
+console.log(Math.PI + " " + Math.E+" "+Math.LN2+" "+Math.SQRT2)
+const regex = /hello/i;
+console.log(regex.test("Hello world hello world"));
+
+const regex2 = /(\d{4})/;
+const teksti2 = "U ba gati 2025";
+const match = regex2.exec(teksti2);
+console.log(match[0]);
+
+$("#jqueryid").text("Hello, world!");
+$(".jqueryclass").text("Jquery class");
+
+$("#hide").click(function (){
+    $('jqueryid').hide();
+});
+$("#show").click(function (){
+    $('jqueryid').show();
+});
+$("#fade").click(function (){
+    $('jqueryid').fadeOut(1000, function(){
+        alert("U krye fade out(qyky o callback)");
+    });
+});
+$("#slide").click(function (){
+    $('jqueryid').slideUp(1000);
+});
+$("#animate").click(function (){
+    $('jqueryid').animate({left:'250px'},1000);
+});
+
+if ("geolocation" in navigator) {
+   navigator.geolocation.getCurrentPosition(
+       function (position) {
+           console.log("latituda:", position.coords.latitude);
+           console.log("longituda:", position.coords.longitude);
+       },
+       function (error) {
+           console.error("sbpunoi:", error.message);
+       }
+   );
+} else {
+   console.log("spunon geolocation ne browser");
+}
+
+if (window.Worker) {
+   const worker = new Worker("worker.js");
+
+   worker.postMessage("nisja punes");
+
+   worker.onmessage = function (event) {
+       console.log("mesazhi prej worker:", event.data);
+   };
+}
+
+const canvas = document.getElementById("canvasFutbolli");
+    const ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(150, 150, 100, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "black";
+    const hexagon = (x, y, size) => {
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+            const angle = (Math.PI / 3) * i;
+            ctx.lineTo(x + size * Math.cos(angle), y + size * Math.sin(angle));
+        }
+        ctx.closePath();
+        ctx.fill();
+    };
+    hexagon(150, 150, 20);
+    hexagon(210, 190, 20);
+    hexagon(90, 120, 20);
+    hexagon(210, 120, 20);
+    hexagon(90, 190, 20);
+    hexagon(150, 90, 20);
+    
+    hexagon(150, 210, 20);
+
+    const canvasGradient = document.getElementById("canvasGradient");
+    const ctxGradient = canvasGradient.getContext("2d");
+    const gradient = ctxGradient.createLinearGradient(0, 0, canvasGradient.width, canvasGradient.height);
+    gradient.addColorStop(0, "red");
+    gradient.addColorStop(1, "yellow");
+    ctxGradient.fillStyle = gradient;
+    ctxGradient.fillRect(0, 0, canvasGradient.width, canvasGradient.height);
+</script>
+</html>

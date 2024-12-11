@@ -61,8 +61,6 @@ if ($response === false) {
                 </div>
                 <div class="profileInfo"> 
                     <div id="name"><?php echo $_SESSION['name']; ?></div>
-                    <input type="hidden" id="sid" value="<?php echo $_SESSION['sid'];?>">
-                    <!-- <div id="sid"><?php// echo $_SESSION['sid']; ?></div> -->
                     <div id="bachelor"><?php echo $_SESSION['bachelor']; ?></div>
                     <div id="email"><?php echo $_SESSION['email']; ?></div>
                 </div>
